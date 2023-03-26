@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'webapp',
-    'import_export'
+    'import_export',
+    'statistiques.apps.StatistiquesConfig'
+    
 ]
 
 MIDDLEWARE = [
