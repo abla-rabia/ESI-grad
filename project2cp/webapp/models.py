@@ -51,10 +51,17 @@ class Doctorant(models.Model):
         ('Ingéniorat', 'Ingéniorat'),
     )
 
+    STATUT =(
+        ('Inscrit', 'Inscrit'),
+        ('A soutenue', 'A soutenue'),
+        ('Abondant', 'Abondant'),
+        ('Radié', 'Radié'),
+    )
+
     nom = models.CharField(max_length=100, null=True)
     prénom = models.CharField(max_length=100, null=True)
     date_de_naissance = models.DateField(null=True)
-    sexe = models.CharField(max_length=1, null=True)
+    sexe = models.CharField(max_length=1, null=True, choices=SEXE)
     telephone = models.CharField(max_length=50, null=True)
     email = models.EmailField(null=True)
     type_doc =  models.CharField(max_length=50, null=True, choices=TYPE_DOC)
@@ -75,7 +82,8 @@ class Doctorant(models.Model):
     a_soutenue = models.ForeignKey(PV, null=True, on_delete=models.SET_NULL, related_name="soutenu")
     date_soutenance = models.DateField(null=True)
     tab_PVs = models.ManyToManyField(PV)
-    tab_séminaires = models.ManyToManyField(Séminaire) 
+    tab_séminaires = models.ManyToManyField(Séminaire)
+    statut = models.CharField(max_length=50, null=True, choices=STATUT) 
     observation = models.CharField(max_length=300, null=True)
 
     def __str__(self):
