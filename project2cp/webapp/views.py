@@ -6,21 +6,6 @@ import os
 
 # Create your views here.
 
-""""
-def index(request):
-    form = DoctorantForm()
-
-    if request.method == 'POST':
-       form = DoctorantForm(request.POST)
-       if form.is_valid():
-         form.save()
-         return redirect('/form')
-        
-    context = {'form':form}
-    return render(request, 'webapp/index.html', context)
-
-"""
-
 def upload_file(request):
   if request.method == 'POST':
     form = UploadFileForm(request.POST, request.FILES)
@@ -44,3 +29,14 @@ def add_séminaire(request):
          return redirect('/séminaire')
 
   return render(request, 'webapp/séminaire.html',  {'form':form})
+
+
+def add_encadrant(request):
+  form = EncadrantForm()
+  if request.method == 'POST':
+       form = EncadrantForm(request.POST)
+       if form.is_valid():
+         form.save()
+         return redirect('/encadrant')
+
+  return render(request, 'webapp/encadrant.html',  {'form':form})

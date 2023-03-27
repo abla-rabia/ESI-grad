@@ -3,7 +3,7 @@ from . import views
 
 
 urlpatterns = [
-   # path('form/', views.index),
     path('fichier/', views.upload_file),
     path('séminaire/', views.add_séminaire),
+    path('encadrant/',views.add_encadrant),
 ]
