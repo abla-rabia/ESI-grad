@@ -1,0 +1,6 @@
+<form action="" method="POST">
+    <h1>Informations personnelle</h1>
+    {% csrf_token%}
+      {{ form1.as_p }}
+      <button type="submit">Suivant</button>
+  </form>
