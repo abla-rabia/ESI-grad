@@ -1,0 +1,70 @@
+ {% extends 'base.html' %}
+
+        
+    {% block content %}
+    <main>
+        <div class="text">
+        <h2>Sexe</h2>
+        <h2>2023</h2>
+        </div>
+        <div class="cards">
+            <div class="Doctorants">
+                <div class="middle">
+                    <div class="left">
+                        <div class="circle">
+                            <div class="circle_texte">{{mDoct}}</div>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <h3>Doctorants</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="Doctorantes">
+                <div class="middle">
+                    <div class="left">
+                        <div class="circle">
+                            <div class="circle_texte">{{fDoct}}</div>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <h3>Doctorantes</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="Total">
+                <div class="middle">
+                    <div class="left">
+                        <div class="circle">
+                            <div class="circle_texte">{{allDoct}}</div>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <h3>Total</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+                <button id="imprimer">
+                    <i class='bx bx-printer'></i>
+                    Imprimer</button>
+                <button id="telecharger"><i class='bx bx-download' ></i>Télécharger</button>
+            </div>  
+            
+        </div>
+        <div class="hello">
+            <h2>Graphes</h2>    
+        
+        <div class="bar">
+            <canvas id="myChart"></canvas>
+            <canvas id="chart"></canvas>
+        </div>
+    </div>
+    </main>
+
+
+
+
+  
+    {% endblock  %}
+   
