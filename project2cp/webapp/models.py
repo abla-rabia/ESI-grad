@@ -70,7 +70,7 @@ class Doctorant(models.Model):
     etablissement_origine = models.CharField(max_length=100, null=True)
     premiere_annee_inscription = models.CharField(max_length=100, null=True)
     nbr_annees_inscription = models.IntegerField(null=True)
-    date_EFST = models.DateField(null=True)
+    date_EFST = models.CharField(max_length=100,null=True)
     laboratoire = models.CharField(max_length=100, null=True)
     directeur = models.ForeignKey(Encadrant, null=True, on_delete=models.SET_NULL)
     co_directeur = models.ForeignKey(Encadrant, null=True, on_delete=models.SET_NULL, related_name="co_dir")

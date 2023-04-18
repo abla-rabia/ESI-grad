@@ -6,7 +6,7 @@
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Abandon</title>
+        <title>inscription</title>
         <link rel="stylesheet" href={% static '/css/style.css' %}>
         <link rel="stylesheet" href={% static '/css/style2.css' %}>
         <link rel="stylesheet" href={% static '/css/navbar.css' %}>
@@ -138,12 +138,12 @@
         </div>
     </aside>
     <main>
-       <h3 class="sous-titre">Abandon d'un doctorant</h3>
+       <h3 class="sous-titre">Informations personnelle:</h3>
         <div class="my-form">
          <form action="" method="POST">
            {%csrf_token%}
-           {{form.as_p}}
-           <button type="submit">Submit</button>
+           {{form1.as_p}}
+           <button type="submit">Suivant</button>
          </form>
         </div> 
     </main>
