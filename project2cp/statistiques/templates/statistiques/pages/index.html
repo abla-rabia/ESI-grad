@@ -4,15 +4,15 @@
     {% block content %}
     <main>
         <div class="text">
-        <h2>Sexe</h2>
-        <h2>2023</h2>
+        <h2>{{ma_liste[0]}}</h2>
+        <h2>{{ma_liste[1]}}</h2>
         </div>
         <div class="cards">
             <div class="Doctorants">
                 <div class="middle">
                     <div class="left">
                         <div class="circle">
-                            <div class="circle_texte">{{mDoct}}</div>
+                            <div class="circle_texte">{{nbM}}</div>
                         </div>
                     </div>
                     <div class="name">
@@ -24,7 +24,7 @@
                 <div class="middle">
                     <div class="left">
                         <div class="circle">
-                            <div class="circle_texte">{{fDoct}}</div>
+                            <div class="circle_texte">{{nbF}}</div>
                         </div>
                     </div>
                     <div class="name">
@@ -36,7 +36,7 @@
                 <div class="middle">
                     <div class="left">
                         <div class="circle">
-                            <div class="circle_texte">{{allDoct}}</div>
+                            <div class="circle_texte">{{nbM}}</div>
                         </div>
                     </div>
                     <div class="name">

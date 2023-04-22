@@ -1,0 +1,13 @@
+<!-- templates/statistiques.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+  <h1>Statistiques de vente</h1>
+  <form method="GET" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Calculer les statistiques</button>
+  </form>
+</main>
+{% endblock %}
