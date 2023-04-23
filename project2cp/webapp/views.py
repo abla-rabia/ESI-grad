@@ -4,7 +4,6 @@ from .models import *
 from .forms import *
 from django.shortcuts import render,redirect
 import os
-from django.urls import reverse
 
 # Create your views here.
 

@@ -1,97 +1,97 @@
 <aside>
     <div class="sidebar" style="position: fixed;">
-        <div class="logo">
-            <i class='bx bxs-data'></i>
-            <span class="logo_name">LOGOHNA</span>
-        </div>
-        <ul class="nav-links">
-            <li>
-                <a href="#">
-                    
-                    <i class='bx bx-home-alt'></i>
-                    <span class="link_name">Accueil</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-search'></i>
-                    <span class="link_name">Recherche</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-user-plus'></i>
-                    <span class="link_name">Inscription</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-user-check'></i>
-                    <span class="link_name">Réinscription</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-pencil'></i>
-                    <span class="link_name">Mise à jour</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-stats' ></i>
-                    <span class="link_name">Statistiques</span>
-                </a>
-            </li>
-            <li>
-                <div class="iocn-link">
-                    <a href="#">
-                        <i class='bx bx-file-blank' ></i>                       
-                        <span class="link_name">PVs</span>
+            <div class="logo">
+                <i class='bx bxs-data'></i>
+                <span class="logo_name">LOGOHNA</span>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="{% url 'Acceuil' %}">
+                        
+                        <i class='bx bx-home-alt'></i>
+                        <span class="link_name">Accueil</span>
                     </a>
-                    <i class='bx bx-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li>
-                        <a class="link_name" href="#">PVs</a>
-                    </li>
-                    <li>
-                        <a href="#">Ajouter un PV</a>
-                    </li>
-                    <li>
-                        <a href="#">Liste des PVs</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <div class="iocn-link">
-                    <a href="#">
-                        <i class='bx bx-group' ></i>
-                        <span class="link_name">Gérer les accès</span>
+                </li>
+                <li>
+                    <a href="{% url 'listdoc' %}">
+                        <i class='bx bx-search'></i>
+                        <span class="link_name">Recherche</span>
                     </a>
-                    <i class='bx bx-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li>
-                        <a class="link_name" href="#">Gérer les accès</a>
-                    </li>
-                    <li>
-                        <a href="#">Ajouter un utilisateur</a>
-                    </li>
-                    <li>
-                        <a href="#">Liste des utilisateurs</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="logout" >
-                <a href="#" >
-                    <i class='bx bx-log-out'></i>
-                    <span class="link_name">Se déconnecter</span>
-                </a>
-            </li>
-        </ul>
-        <div class="logout">
+                </li>
+                <li>
+                    <a href="{% url 'inscription0' %}">
+                        <i class='bx bx-user-plus'></i>
+                        <span class="link_name">Inscription</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'reinscription' %}">
+                        <i class='bx bx-user-check'></i>
+                        <span class="link_name">Réinscription</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'miseajour' %}">
+                        <i class='bx bx-pencil'></i>
+                        <span class="link_name">Mise à jour</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'form_view' %}">
+                        <i class='bx bx-stats' ></i>
+                        <span class="link_name">Statistiques</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class='bx bx-file-blank' ></i>                       
+                            <span class="link_name">PVs</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li>
+                            <a class="link_name" href="#">PVs</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'fichier' %}">Ajouter un PV</a>
+                        </li>
+                        <li>
+                            <a href="#">Liste des PVs</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class='bx bx-group' ></i>
+                            <span class="link_name">Gérer les accès</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li>
+                            <a class="link_name" href="#">Gérer les accès</a>
+                        </li>
+                        <li>
+                            <a href="#">Ajouter un utilisateur</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'listusers' %}">Liste des utilisateurs</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="logout" >
+                    <a href="#" >
+                        <i class='bx bx-log-out'></i>
+                        <span class="link_name">Se déconnecter</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="logout">
+                
+            </div>
             
         </div>
-        
-    </div>
 </aside>
