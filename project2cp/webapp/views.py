@@ -3,8 +3,18 @@ from .models import *
 from .forms import *
 from django.shortcuts import render,redirect
 import os
+from django.contrib.auth.forms import UserCreationForm 
+from django.contrib.auth import authenticate, logout
+from django.contrib.auth import  login as MyLogin 
+from django.contrib import messages
+from django.contrib.sessions.middleware import SessionMiddleware
+from django.contrib.sessions.backends.db import SessionStore
+
 
 # Create your views here.
+
+def home (request):
+    return  render(request,'webapp/home.html')
 
 
 
@@ -56,15 +66,14 @@ def inscrip3(request):
             data.update(request.session['form1_data'])
             data.update(request.session['form2_data'])
             data.update(request.session['form3_data'])
+            
             data.pop('csrfmiddlewaretoken', None)
-           
+            
             nouvel_Doctorant = Doctorant(**data)
+            nouvel_Doctorant.nbr_annees_inscription = 1
+            #tab_PVs = request.session['form1_data'].get('num_PV')
+            #nouvel_Doctorant.tab_PVs.set(tab_PVs)
             nouvel_Doctorant.save()
-
-            tab_PVs = request.session['form1_data']['tab_PVs']
-            nouvel_Doctorant.tab_PVs.set(request.session['form1_data']['tab_PVs'])
-           # nouvel_Doctorant.tab_PVs.set(tab_PVs)
-
             # Supprimer les données de session
             del request.session['form1_data']
             del request.session['form2_data']
@@ -78,15 +87,62 @@ def inscrip3(request):
 
 
 
+####################connexion page########################
+##########################################################
+
+
+def login (request):
+    context={}
+    return  render(request,'webapp/login.html',context)
+  
+
+
+def register (request):
+    form=CreateNewUser()
+    if request.method=='POST':
+        form=CreateNewUser(request.POST)
+
+        if form.is_valid():
+          form.save()
+          user=form.cleaned_data.get('username')
+          messages.success(request, user+'  Created successfully !')
+          return redirect('login')
+        else:
+         messages.info(request,'there is somthing rong:)')
+        
+
+    context={'form':form}
+    return  render(request,'webapp/register.html',context)
 
 
 
+def userLogin (request):
+    if request.method=='POST':
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+        user = authenticate(request,username=username,password=password)
+
+        if user is not None:
+           print("okkkkkkkkkkk")
+           MyLogin (request,user)
+           print("yeeeeeeeeeeeeeeeees")
+           return redirect('/profile/')
+        else:
+         messages.info(request,'Credentials Error')
+         #print(form.errors)
+         print("Credentials Error")
+
+    context={}
+    return  render(request,'webapp/login.html',context)
+
+  
+def userlogout (request):
+   logout (request)
+   return redirect('login')
 
 
-
-
-
-
+##################ikram#################
+########################################
 
 
 def upload_file(request):
@@ -112,3 +168,13 @@ def add_séminaire(request):
          return redirect('/séminaire')
 
   return render(request, 'webapp/séminaire.html',  {'form':form})
+
+
+
+
+
+
+
+
+
+

@@ -79,4 +79,7 @@ class Doctorant(models.Model):
     observation = models.CharField(max_length=300, null=True)
 
     def __str__(self):
-       return self.nom
+      return self.nom
+    
+
+

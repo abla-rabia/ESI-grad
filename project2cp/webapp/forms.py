@@ -14,21 +14,17 @@ class CreateNewUser(UserCreationForm ):
 
 
 class Inscription1(ModelForm ):
-   tab_PVs = forms.ModelMultipleChoiceField(
-        queryset=PV.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
-        required=False
-    )
-   class Meta:
-    model= Doctorant
-    fields=['tab_PVs','nom','prénom','date_de_naissance', 'sexe','telephone','email']#photo, 
+    #num_PV=forms.CharField(label="Numero du PV",max_length=100,required=False)
+    class Meta:
+      model= Doctorant
+      fields=['nom','prénom','date_de_naissance', 'sexe','telephone','email']#photo, 
    
 
 
 class Inscription2(ModelForm ):
    class Meta:
     model= Doctorant
-    fields=['etablissement_origine','option','type_doc','premiere_annee_inscription','date_EFST','laboratoire','titre_these']
+    fields=['etablissement_origine','option','type_doc','diplome','premiere_annee_inscription','date_EFST','laboratoire','titre_these']
 
 
 class Inscription3(ModelForm ):
@@ -36,7 +32,7 @@ class Inscription3(ModelForm ):
     model= Doctorant
     fields=['directeur','co_directeur','observation']
 
-    
+
 class UploadFileForm(forms.Form):
     file = forms.FileField()
 
@@ -45,3 +41,8 @@ class SéminaireForm(ModelForm):
     class Meta:
         model = Séminaire 
         fields = '__all__'
+
+
+
+
+
