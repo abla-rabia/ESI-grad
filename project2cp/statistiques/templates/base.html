@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>integration</title>
+        <!-- Link Swiper's CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
         <link rel="stylesheet" href="{% static 'css/style2.css' %}">
         <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -23,16 +25,14 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.0/chart.min.js" integrity="sha512-R60W3LgKdvvfwbGbqKusRu/434Snuvr9/Flhtoq9cj1LQ9P4HFKParULqOCAisHk/J4zyaEWWjiWIMuP13vXEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
             var ctx = document.getElementById('myChart').getContext('2d');
+            var liste = {{ ma_liste|safe }};
             var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Doctorants', 'Doctorantes'],
+                labels: {{ names|safe }},
                 datasets: [{
-                    data: [{{nbM}},{{nbF}}],
-                    backgroundColor: [
-                    '#214E77',
-                    '#FEB4A9'
-                    ],
+                    data: liste,
+                    backgroundColor: {{ couleurs_fond|safe }},
                     borderRadius: 50,
                 }]
             },
@@ -55,13 +55,10 @@
         var chart2 = new Chart(ctx2, {
             type: 'doughnut',
             data: {
-                labels: ['Doctorants', 'Doctorantes'],
+                labels: {{ names|safe }},
                 datasets: [{
-                    data: [{{nbM}},{{nbF}}],
-                    backgroundColor: [
-                        '#214E77',
-                        '#FEB4A9'
-                    ],
+                    data: liste,
+                    backgroundColor: {{ couleurs_fond|safe }},
                 }],
             },
             options: {
@@ -69,6 +66,23 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 aspectRatio: 2,
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor(((currentValue/total) * 100)+0.5);
+                            if (currentValue === 0) {
+                                return "";
+                            } else {
+                                return dataset.labels[tooltipItem.index] + ": " + percentage + "%";
+                            }
+                        }
+                    }
+                }
             }
         });
         </script>

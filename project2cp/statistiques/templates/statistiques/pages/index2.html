@@ -1,6 +1,50 @@
-<ul>
-    {% for element in ma_liste %}
-      <li>{{ element }}</li>
-    {% endfor %}
- </ul>
-  
+{% extends 'base.html' %}
+
+        
+{% block content %}
+<main>
+    <div class="text">
+    <h2>{{criteres.0}}</h2>
+    <h2>{{criteres.1}}</h2>
+    </div>
+    <div class="boutt" style="padding-top:20px;">
+        <a href="{% url 'stats' %}"><button id="Numeriques" style="background-color: none; color: #214E77; border-color:#214E77; border-radius:10px 0px 0px 10px; padding-top:5px;padding-right:12px;padding-bottom:5px;padding-left:12px; font-size:15px;margin-right:-5px; ">Numeriques</button></a>
+        <button id="Graphiques" style="background-color: #214E77; color: #fff; border:none; border-radius:0px 10px 10px 0px; padding-top:7px;padding-right:14px;padding-bottom:7px;padding-left:14px;font-size:15px ; ">Graphiques</button>
+    </div>
+        
+        
+    
+     
+    
+    <div class="bar"  style="padding-top: 20px; max-width:54%">
+        <canvas id="myChart"></canvas>
+        <canvas id="chart"></canvas>
+    </div>
+    <a href="{% url 'form_view' %}" style="  text-decoration: none;
+    ">
+    <button classe="retour" style="padding-bottom : 6px;
+        padding-top : 6px;padding-right : 10px;padding-left : 10px;
+        margin-top:20px;
+        background-color: #64D1B4;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        margin-left: 10px;
+        height: 50%;
+        font-size: 14px;
+        text-align: center;
+        transition: all 0.3s ease;
+        font-weight: 400;
+        display: flex;
+      align-items: center;">
+            Retour</button>
+    </a>
+</div>
+</main>
+
+
+
+
+
+{% endblock  %}
