@@ -1,145 +1,9 @@
-{% load static %}
+{% extends 'webapp/main.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>PV</title>
-        <link rel="stylesheet" href={% static '/css/style.css' %}>
-        <link rel="stylesheet" href={% static '/css/style2.css' %}>
-        <link rel="stylesheet" href={% static '/css/navbar.css' %}>
-        
-        <!--Boxiocns CDN Link-->
-        <!-- Boxicons CSS -->
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+{%block content %}
 
-    </head>
-    <body>
-        
-        <nav>
-      <div class="search-bar">
-        <i class='bx bx-search'></i>
-        <input type="text" placeholder="Rechercher un doctorant">
-      </div>
-      <div class="profile">
-        <div class="profile-info">
-          <img src={% static '/images/user.jpg'%} alt="Avatar">
-          <span class="username">Fatima</span>
-          <i class='bx bx-chevron-down arrow'></i>
-        </div>
-        <div class="dropdown">
-          
-          <img src={% static '/images/user.jpg'%} alt="Avatar">
-          <div class="user-info">
-            <p>Nom Complet</p>
-            <p>Email</p>
-            <button>Modifier mes infos</button>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <aside>
-    <div class="sidebar" style="position: fixed;">
-            <div class="logo">
-                <i class='bx bxs-data'></i>
-                <span class="logo_name">LOGOHNA</span>
-            </div>
-            <ul class="nav-links">
-                <li>
-                    <a href="#">
-                        
-                        <i class='bx bx-home-alt'></i>
-                        <span class="link_name">Accueil</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class='bx bx-search'></i>
-                        <span class="link_name">Recherche</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class='bx bx-user-plus'></i>
-                        <span class="link_name">Inscription</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class='bx bx-user-check'></i>
-                        <span class="link_name">Réinscription</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class='bx bx-pencil'></i>
-                        <span class="link_name">Mise à jour</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class='bx bx-stats' ></i>
-                        <span class="link_name">Statistiques</span>
-                    </a>
-                </li>
-                <li>
-                    <div class="iocn-link">
-                        <a href="#">
-                            <i class='bx bx-file-blank' ></i>                       
-                            <span class="link_name">PVs</span>
-                        </a>
-                        <i class='bx bx-chevron-down arrow'></i>
-                    </div>
-                    <ul class="sub-menu">
-                        <li>
-                            <a class="link_name" href="#">PVs</a>
-                        </li>
-                        <li>
-                            <a href="#">Ajouter un PV</a>
-                        </li>
-                        <li>
-                            <a href="#">Liste des PVs</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <div class="iocn-link">
-                        <a href="#">
-                            <i class='bx bx-group' ></i>
-                            <span class="link_name">Gérer les accès</span>
-                        </a>
-                        <i class='bx bx-chevron-down arrow'></i>
-                    </div>
-                    <ul class="sub-menu">
-                        <li>
-                            <a class="link_name" href="#">Gérer les accès</a>
-                        </li>
-                        <li>
-                            <a href="#">Ajouter un utilisateur</a>
-                        </li>
-                        <li>
-                            <a href="#">Liste des utilisateurs</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="logout" >
-                    <a href="#" >
-                        <i class='bx bx-log-out'></i>
-                        <span class="link_name">Se déconnecter</span>
-                    </a>
-                </li>
-            </ul>
-            <div class="logout">
-                
-            </div>
-            
-        </div>
-    </aside>
 
-<main>
-       <h3 class="sous-titre">Ajouter un PV</h3>
+<h3 class="sous-titre">Ajouter un PV</h3>
        <div class="my-form">
        <form method="post" enctype="multipart/form-data">
          {% csrf_token %}
@@ -148,21 +12,13 @@
          </p>
          <button type="submit">Upload</button>
       </form>
-      </div>
-</main>
-<script src="script.js"></script>
+      </div>   
 
-        <script>
-            let arrow= document.querySelectorAll(".arrow");
-            
-            for (var i=0; i < arrow.length; i++){
-                arrow[i].addEventListener("click",(e)=>{
-                    
-                    let arrowParent = e.target.parentElement.parentElement;
-               console.log(arrowParent);
-               arrowParent.classList.toggle("showMenu");
-             });
-            }
-        </script>
-    </body>
-</html>
+
+{% endblock %}
+
+
+
+
+
+       

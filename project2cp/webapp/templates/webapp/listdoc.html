@@ -1,0 +1,92 @@
+{% extends 'webapp/main.html' %}
+
+{%block content %}
+
+    
+  
+        
+
+        <h1 class="sous-titre">Liste des doctorants</h1>
+  
+
+        <div class="center">
+          <button class="submit-button">Valider</button>
+          <p>filtrer</p>
+        </div>
+
+        <div class="window">
+            <div class="title-bar">
+             
+              <div class="buttons">
+                <div class="minimize"></div>
+              </div>
+            </div>
+
+
+
+
+            <div class="content">
+              <div class="table">
+      
+                <div class="row">
+                  {% comment %} <div class="cell header">Photo</div>   {% endcomment %}
+                  <div class="cell header">Nom</div>
+                  <div class="cell header">Prénom</div>
+                  <div class="cell header">Année d'inscription</div>
+                  <div class="cell header">Statut</div>
+                  <div class="cell header">Details</div>
+                </div>
+      
+                {% for doctorant in doctorants %}
+                <div class="row">
+                    {% comment %} <div class="cell"><img src="{{ doctorant.photo.url }}"></div> {% endcomment %}
+                    <div class="cell">{{ doctorant.nom }}</div>
+                    <div class="cell">{{ doctorant.prenom }}</div>
+                    <div class="cell">{{ doctorant.annee_inscription }}</div>
+                    <div class="cell">{{ doctorant.statut }}</div>
+                    <div class="cell"><a href="#">Detail</a></div>
+                </div>
+            {% endfor %}
+                
+              </div>
+            </div>
+
+
+
+            <div class="button-container">
+                <button class="button"><span>1</span></button>
+                <button class="button"><span>2</span></button>
+                <button class="button"><span>3</span></button>
+              </div>
+
+
+              
+         
+          
+          {% endblock %}
+
+
+
+
+
+
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+    
+    

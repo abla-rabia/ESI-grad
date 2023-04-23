@@ -11,7 +11,7 @@
             <button id="Numeriques" style="background-color: #214E77; color: #fff; border:none; border-radius:10px 0px 0px 10px; padding-top:7px;padding-right:14px;padding-bottom:7px;padding-left:14px; font-size:15px;margin-right:-5px; ">Numeriques</button>
             <a href="{% url 'stats2' %}"><button id="Graphiques" style="background-color: none; color: #214E77; border-color:#214E77; border-radius:0px 10px 10px 0px; padding-top:5px;padding-right:12px;padding-bottom:5px;padding-left:12px;font-size:15px ; ">Graphiques</button></a>
         </div>
-        <div class="cards" style="grid-template-columns: repeat(3,1fr); max-width:50%;">
+        <div class="cards" style="grid-template-columns: repeat(3,1fr);margin-right:30px">
             
             {% for i in ma_liste %}
                 <div class="Doctorants" style="background-color: {% if forloop.counter0|divisibleby:3 %} #64D1B4 {% elif forloop.counter0|add:1|divisibleby:3 %} #214E77 {% else %} #FEB4A9 {% endif %};">

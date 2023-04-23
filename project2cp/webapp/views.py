@@ -4,8 +4,48 @@ from .models import *
 from .forms import *
 from django.shortcuts import render,redirect
 import os
+from django.urls import reverse
 
 # Create your views here.
+
+
+
+def inscrip0(request):
+    return render(request, 'webapp/inscription0.html')
+
+def Acceuil(request):
+    return render(request, 'webapp/acceuil.html')
+
+def m_a_j(request):
+    return render(request, 'webapp/miseajours.html')
+
+
+
+def user_list(request):
+    users = User.objects.all()
+    return render(request, 'webapp/listuser.html', {'users': users})
+
+def doctorant_list(request):
+    doctorants = Doctorant.objects.all()
+    context = {
+        'doctorants': doctorants
+    }
+    return render(request, 'webapp/listdoc.html', context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def upload_file(request):
   if request.method == 'POST':
@@ -222,3 +262,5 @@ def inscrip3(request):
     context = {'form3': form3}
     return render(request, 'webapp/inscrip3.html', context)
  
+
+

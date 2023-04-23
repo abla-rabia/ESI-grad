@@ -1,0 +1,157 @@
+{% extends 'webapp/main.html' %}
+{% comment %} {% extends 'webapp/main.html' %}
+
+{%block content %}
+        
+
+        <h1 class="sous-titre">Liste des utilisateurs</h1>
+  
+        <div class="window">
+            <div class="title-bar">
+             
+              <div class="buttons">
+                <div class="minimize"></div>
+              </div>
+            </div>
+            <div class="content">
+              <div class="table">
+      
+                <div class="row">
+                  <div class="cell header">Photo</div>  
+                  <div class="cell header">Nom</div>
+                  <div class="cell header">Prénom</div>
+                  <div class="cell header">Role</div>
+                  <div class="cell header">Adress e-mail</div>
+                  <div class="cell header">Modifier</div>
+                </div>
+      
+                <div class="row">
+                    
+                    <i class="fa-solid fa-user"></i>
+                   <div class="cell">RABIA</div>
+                   <div class="cell">Abla</div>
+                   <div class="cell">Admin</div>
+                   <div class="cell">la_rabia@esi.dz</div>       
+                   <div class="cell"><button>Modifier</button></div>
+                 </div>
+      
+                 <div class="row">
+                    
+                    <i class="fa-solid fa-user"></i>
+                   <div class="cell">KOUADRI</div>
+                   <div class="cell">Nada</div>
+                   <div class="cell">Admin</div>
+                   <div class="cell">ln_kouadri@esi.dz</div>
+                   <div class="cell"><button>Modifier</button></div>
+                 </div>
+      
+                 <div class="row">
+                    <i class="fa-solid fa-user"></i>
+                  <div class="cell">HADDAD</div>
+                  <div class="cell">Amira</div>
+                  <div class="cell">Admin</div>
+                  <div class="cell">la_haddad@esi.dz</div>
+                  <div class="cell"><button>Modifier</button></div>
+                </div>
+      
+      
+      
+                <div class="row">
+                    
+                   <i class="fa-solid fa-user"></i>
+                  <div class="cell">GUEDDA</div>
+                  <div class="cell">Fatima Zahraa</div>
+                  <div class="cell">Admin</div>
+                  <div class="cell">lf_guedda@esi.dz</div>
+                  <div class="cell"><button>Modifier</button></div>
+                </div>
+      
+                 <div class="row">
+                    
+                    <i class="fa-solid fa-user"></i>
+                   <div class="cell">AIT AHMED LAMARA</div>
+                   <div class="cell">Meriem</div>
+                   <div class="cell">Admin</div>
+                   <div class="cell">lm_aitahmedlamara@esi.dz</div>
+                   <div class="cell"><button>Modifier</button></div>
+                 </div>
+      
+                 <div class="row">
+                    
+                    <i class="fa-solid fa-user"></i>
+                   <div class="cell">DEBBIH</div>
+                   <div class="cell">Ikram Zineb</div>
+                   <div class="cell">Admin</div>
+                   <div class="cell">li_debih@esi.dz</div>
+                   <div class="cell"><button>Modifier</button></div>
+                 </div>
+      
+      
+                
+                
+              </div>
+            </div>
+
+        
+            
+
+
+
+
+
+
+          </div>
+
+{% endblock %} {% endcomment %}
+
+
+
+
+
+
+{% block content %}
+
+<h1 class="sous-titre">Liste des utilisateurs</h1>
+
+<div class="window">
+    <div class="title-bar">
+
+        <div class="buttons">
+            <div class="minimize"></div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="table">
+
+            <div class="row">
+                <div class="cell header">Photo</div>
+                <div class="cell header">Nom</div>
+                <div class="cell header">Prénom</div>
+                <div class="cell header">Role</div>
+                <div class="cell header">Adresse e-mail</div>
+                <div class="cell header">Modifier</div>
+            </div>
+
+            {% for user in users %}
+            <div class="row">
+                <i class="fa-solid fa-user"></i>
+                <div class="cell">{{ user.name }}</div>
+                <div class="cell">{{ user.first_name }}</div>
+                <div class="cell">{{ user.role }}</div>
+                <div class="cell">{{ user.email }}</div>
+                <div class="cell"><button>Modifier</button></div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+      
+      
+      
+
+
+
