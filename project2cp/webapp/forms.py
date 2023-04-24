@@ -34,25 +34,22 @@ class EncadrantForm(ModelForm):
    
 
 class ReinscriptionForm(forms.Form):
-    fichier_nom = forms.CharField(label='Numéro du PV', max_length=100)
-    doctorant_emails = forms.CharField(label='Emails des doctorants à réinscrire', widget=forms.Textarea)
+    pv_choice = forms.ModelChoiceField(queryset=PV.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}), empty_label="Selectionner un PV", required=True )
+    
 
 
 class ChangementDeTitreForm(forms.Form):
-    fichier_nom = forms.CharField(label='Numéro du PV', max_length=100)
-    doctorant_email = forms.CharField(label='Email du doctorant',  max_length=100)
-    nv_titre = forms.CharField(label='Nouveau titre de thèse',  max_length=100)
+    pv_choice = forms.ModelChoiceField(queryset=PV.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}), empty_label="Selectionner un PV", required=True )    
+    nv_titre = forms.CharField(label='Nouveau titre de thèse',  max_length=100,required=True )
 
 
 class SoutenanceForm(forms.Form):
-    fichier_nom = forms.CharField(label='Numéro du PV', max_length=100)
-    doctorant_emails = forms.CharField(label='Emails des doctorants qui ont soutenu', widget=forms.Textarea)
-    date = forms.DateField(label="Date de soutenance")
+    pv_choice = forms.ModelChoiceField(queryset=PV.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}), empty_label="Selectionner un PV", required=True )    
+    date = forms.DateField(label="Date de soutenance", help_text="Entrer une date ayant le format AAAA-MM-JJ", required=True)
 
 
 class RadiationForm(forms.Form):
-    fichier_nom = forms.CharField(label='Numéro du PV', max_length=100)
-    doctorant_email = forms.CharField(label='Email du doctorant',  max_length=100)
+    pv_choice = forms.ModelChoiceField(queryset=PV.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}), empty_label="Selectionner un PV", required=True )
 
 
 class AbondantForm(forms.Form):

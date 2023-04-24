@@ -142,6 +142,7 @@
         <div class="my-form">
          <form action="" method="POST">
            {%csrf_token%}
+           {% %}
            {{form1.as_p}}
            <button type="submit">Suivant</button>
          </form>

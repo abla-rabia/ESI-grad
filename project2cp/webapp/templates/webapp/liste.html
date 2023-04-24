@@ -1,10 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Radiation</title>
+        <title>Liste</title>
         <!--Boxiocns CDN Link-->
         <!-- Boxicons CSS -->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -23,7 +25,7 @@
 </script>
 
 {% block content %}
-  <h1>Radiation</h1>
+  <h1>Liste des doctorants</h1>
   <form method="GET" action="">
   <div class="search-bar">
         <i class='bx bx-search'></i>
@@ -31,10 +33,12 @@
   </div>
   </form>
   <input type="checkbox" id="select-all-checkbox" onclick="selectAll()"> Sélectionner tout
-  <form method="POST" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-      <h5>Veuillez sélectionner les doctorants concernés par la radiation</h5>
+  <button type="submit" name="action" value="reinscription">Réinscription</button>
+  <button type="submit" name="action" value="soutenance">Soutenance</button>
+  <button type="submit" name="action" value="changtitre">Changement de titre</button>
+  <button type="submit" name="action" value="radiation">Radiation</button>
+
+
   <table class="doctorant-table">
     <thead>
       <tr>
@@ -53,18 +57,11 @@
           <td>{{ doctorant.prénom }}</td>
           <td>{{ doctorant.email }}</td>
           <td>{{ doctorant.status }}</td>
+
         </tr>
       {% endfor %}
     </tbody>
   </table>
-    <button type="submit">Valider la Radiation</button>
-  </form> 
-
-  {% if error_message %}
-    <div class="alert alert-danger" role="alert">
-        {{ error_message }}
-    </div>
-{% endif %}
 {% endblock %}
 
 
@@ -93,4 +90,7 @@
       background-color: #ddd;
     }
   </style>
-{% endblock %}  
+{% endblock %}   
+
+
+

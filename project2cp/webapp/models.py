@@ -51,10 +51,10 @@ class Doctorant(models.Model):
         ('Ingéniorat', 'Ingéniorat'),
     )
 
-    STATUT =(
+    STATUS =(
         ('Inscrit', 'Inscrit'),
         ('A soutenue', 'A soutenue'),
-        ('Abondant', 'Abondant'),
+        ('Différé', 'Différé'),
         ('Radié', 'Radié'),
     )
 
@@ -83,7 +83,7 @@ class Doctorant(models.Model):
     date_soutenance = models.DateField(null=True)
     tab_PVs = models.ManyToManyField(PV)
     tab_séminaires = models.ManyToManyField(Séminaire)
-    statut = models.CharField(max_length=50, null=True, choices=STATUT)
+    status = models.CharField(max_length=50, null=True, choices=STATUS)
     observation = models.CharField(max_length=300, null=True)
 
     def __str__(self):
