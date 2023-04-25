@@ -1,0 +1,69 @@
+{% extends 'webapp/main2.html' %}
+
+{%block content %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Liste des PVs</title>
+        <!--Boxiocns CDN Link-->
+        <!-- Boxicons CSS -->
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    </head>
+    <body>
+
+  <h1>Liste des PVs</h1>
+
+  <table class="pv-table">
+    <thead>
+      <tr>
+        <th>Numéro</th>
+        <th>Lien vers le PV</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pv in pvs %}
+        <tr>
+          <td>{{ pv.numéro }}</td>
+          <td><a href="{{ pv.fichier.url }}" target="_blank">Lien</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+
+{% block css %}
+  <style>
+    .pv-table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .pv th, .pv-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .pv-table th {
+      background-color: #f2f2f2;
+    }
+
+    .pv-table tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .pv-table tr:hover {
+      background-color: #ddd;
+    }
+  </style>
+{% endblock %}  
+
+{% endblock %}

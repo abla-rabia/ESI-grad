@@ -23,7 +23,6 @@ nav {
 .search-bar {
   width: 361px;
   height: 30px;
-  background: #E4E9EE;
   display: flex;
   align-items: center;
   flex-direction: row;

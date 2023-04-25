@@ -169,3 +169,277 @@ main canvas#chart{
 text-align: left;
 
 }
+main .formmm{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+
+}
+
+main .form-control {
+  /* search bar */
+
+
+/* Auto layout */
+
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 13px 53px 13px 20px;
+margin-left: 316px;
+border: 0ch;
+width: 380px;
+height: 30px;
+left: 892px;
+top: 148px;
+
+background: #E4E9EE;
+border-radius: 29px;
+
+}
+
+main .form-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  
+  
+  
+
+}
+main .form-group p{
+
+  font-size: 14px;
+  font-weight: 500;
+  color:#37404f;
+  margin-top: 1px;
+  margin-left: 35px;
+}
+main .form-group  > *:not(:last-child) {
+  margin-right: 30px;
+}
+
+
+main .form-group label {
+  flex-basis: 20%;
+  text-align: right;
+  margin-right: 1rem;
+  
+}
+
+main .form-group input,
+.form-row select {
+  flex-basis: 70%;
+  background: #E4E9EE;
+border-radius: 10px;
+border: 0ch;
+padding: 3px;
+}
+main .first {
+  margin-top: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+main .first button {
+  margin-right: 70px;
+  padding : 5px 10px 5px 10px;
+  background-color: #64D1B4;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+main .window{
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+submit-button {
+  padding: 10px 20px;
+  background-color: #64D1B4;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+
+
+
+  /*background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;*/
+
+
+}
+
+
+
+.submit-button:hover {
+  cursor: pointer;
+  background-color: #c2cecb;
+}
+
+
+
+main .form-group p {
+  text-align: right;
+  padding: 10px 20px;
+  margin-right: 150px;
+  color: #37404f;
+  margin-top: -6px;
+
+}
+
+
+
+
+.window {
+  position: absolute;
+  width: calc(100% - 350px);
+  height: auto;
+  top: 60%;
+  left: 60%;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+  border-radius: 23px;
+  box-shadow: 0px 0px 10px #ccc;
+  background-color: #fff;
+
+}
+
+.title-bar {
+  background-color: #fff;
+  border-top-left-radius: 21px;
+  border-top-right-radius: 21px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 20px;
+  
+  
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #f3ebeb;
+
+  /*display: inline-block;
+background-color: #781313;
+color: white;
+border: none;
+padding: 8px 16px;
+text-align: center;
+text-decoration: none;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;*/
+}
+
+.minimize {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #fff;
+  margin-left: 10px;
+}
+
+.content {
+  padding: 20px;
+}
+
+.table {
+  display: table;
+  width: 100%;
+  
+  
+  
+}
+
+.row {
+  display: table-row;
+  border-bottom: 1px solid #ccc;
+  Font: Poppins;
+  
+  
+}
+
+
+.cell {
+  display: table-cell;
+  padding: 10px;
+}
+
+main .cell button {
+  background-color: #FEB4A9;
+color: #fff;
+border: none;
+padding: 2px;
+border-radius: 5px;
+/*font-size: 16px;*/
+gap: 10px;
+}
+button:hover {
+  cursor: pointer;
+  background-color: #c2cecb;
+}
+/*
+.header {
+  font-weight: bold;
+}*/
+
+
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: fit-content;
+}
+
+.button {
+  width: 25px;
+  height: 25px;
+  border: 2px solid #64D1B4;
+  border-radius: 5px;
+  margin-right: 10px;
+  background-color: white;
+  color: #64D1B4;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button:last-child {
+  margin-right: 0;
+}
+
+.button:hover {
+  background-color: #64D1B4;
+  color: white;
+}
+
+.button:hover span {
+  color: white;
+}
+
+.button span {
+  color: #64D1B4;
+}

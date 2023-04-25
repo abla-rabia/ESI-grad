@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="center">
+    <div class="center" style="padding-bottom: 100px;">
         <div class="tit">
             <h1 class="titre">Mise à jour</h1>
             <div class="rectangular"></div>
@@ -23,33 +23,28 @@
         </div>
 
         <div class="buttons">
-            <a href="{% url 'changementtitre' %}">
+            <a href="{% url 'changementtitre' %}" style="text-decoration:none;">
              <div class="Bout1">
                 <div class="ph1"></div>
                 <button class="boutThese"> Titre de la thèse</button>
              </div>
             </a>
 
-            <a href="{% url 'soutnenance' %}">
+            <a href="{% url 'soutnenance' %}" style="text-decoration:none;">
             <div class="Bout2">
                 <div class="ph2"></div>
                 <button class="boutSout"> Soutenance </button>
             </div>
             </a>
 
-            <a href="{% url 'radiation' %}">
+            <a href="{% url 'radiation' %}" style="text-decoration:none;">
             <div class="Bout3">
                 <div class="ph3"></div>
                 <button class="boutRad"> Radiation </button>
             </div>
             </a>
 
-            <a href="{% url 'abondant' %}">
-            <div class="Bout4">
-                <div class="ph4"></div>
-                <button class="boutAbnd"> Abandon </button>
-            </div>
-             </a>
+            
 
         </div>
     </div>

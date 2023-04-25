@@ -1,67 +1,84 @@
-{% extends 'webapp/main.html' %}
+{% extends 'webapp/main2.html' %}
 
 {%block content %}
 
     
+<form method="post" class="form-row">
+
+  {% csrf_token %}
   
+  <h2 class="sous-titre">Liste des doctorants</h2>
+  <div class="first">
+  <div >
+    {{ form.nom_prénom }}
+  </div>
+  <button type="submit">Rechercher</button>
+</div>
+  <div class="form-group row">
+    <p >Filtrer les résultats: </p>
+    <div class="col-sm-2">
+      {{ form.date_debut }}
+    </div>
+    <div class="col-sm-2">
+      {{ form.date_fin }}
+    </div>
+    <div class="col-sm-2">
+      {{ form.sexe }}
+    </div>
+    <div class="col-sm-2">
+      {{ form.option }}
+    </div>
+    <div class="col-sm-2">
+      {{ form.type_doc }}
+    </div>
+    <div class="col-sm-2">
+      {{ form.statut }}
+    </div>
+  </div>
+  
+  
+  
+  
+</form>
+
         
-
-        <h1 class="sous-titre">Liste des doctorants</h1>
-  
-
-        <div class="center">
-          <button class="submit-button">Valider</button>
-          <p>filtrer</p>
-        </div>
-
-        <div class="window">
-            <div class="title-bar">
-             
-              <div class="buttons">
-                <div class="minimize"></div>
-              </div>
-            </div>
-
-
-
-
+          
+          <div class="window" style="width:75%;margin-left:-3px;margin-top:20px;padding:2px;">
             <div class="content">
-              <div class="table">
-      
-                <div class="row">
-                  {% comment %} <div class="cell header">Photo</div>   {% endcomment %}
-                  <div class="cell header">Nom</div>
-                  <div class="cell header">Prénom</div>
-                  <div class="cell header">Année d'inscription</div>
-                  <div class="cell header">Statut</div>
-                  <div class="cell header">Details</div>
-                </div>
-      
-                {% for doctorant in doctorants %}
-                <div class="row">
-                    {% comment %} <div class="cell"><img src="{{ doctorant.photo.url }}"></div> {% endcomment %}
-                    <div class="cell">{{ doctorant.nom }}</div>
-                    <div class="cell">{{ doctorant.prenom }}</div>
-                    <div class="cell">{{ doctorant.annee_inscription }}</div>
-                    <div class="cell">{{ doctorant.statut }}</div>
-                    <div class="cell"><a href="#">Detail</a></div>
-                </div>
-            {% endfor %}
-                
-              </div>
-            </div>
-
-
-
-            <div class="button-container">
-                <button class="button"><span>1</span></button>
-                <button class="button"><span>2</span></button>
-                <button class="button"><span>3</span></button>
-              </div>
-
-
-              
-         
+              <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Date</th>
+                        <th>Sexe</th>
+                        <th>Option</th>
+                        <th>Statut</th>
+                        <th>Type de doctorat</th>
+                        <th>Détails</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for doctorant in doctorants %}
+                        <tr>
+                            <td>{{ doctorant.nom }}</td>
+                            <td>{{ doctorant.prenom }}</td>
+                            <td>{{ doctorant.premiere_annee_inscription }}</td>
+                            <td>{{ doctorant.sexe }}</td>
+                            <td>{{ doctorant.option }}</td>
+                            <td>{{ doctorant.statut }}</td>
+                            <td>{{ doctorant.type_doc }}</td>
+                            <td><button>Détails</button></td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="9">Aucun résultat.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+          </div>
+        </div>
           
           {% endblock %}
 

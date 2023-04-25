@@ -4,6 +4,9 @@ from .models import *
 from .forms import *
 from django.shortcuts import render,redirect
 import os
+from django.db.models import Q
+import datetime
+
 
 # Create your views here.
 
@@ -83,115 +86,149 @@ def add_encadrant(request):
 
 
 def reinscription(request):
+    form = ReinscriptionForm()
+    doctorants = Doctorant.objects.all().order_by('nom','prénom')
+    error_message = None
+
     if request.method == 'POST':
         form = ReinscriptionForm(request.POST)
         if form.is_valid():
-            fichier_nom = form.cleaned_data['fichier_nom']
-            fichier = PV.objects.get(numéro=fichier_nom)
-            doctorant_emails = form.cleaned_data['doctorant_emails'].split()
-            for email in doctorant_emails:
-                try:
-                    doctorant = Doctorant.objects.get(email=email)
+            print('hello2')
+            selected_pv = form.cleaned_data['pv_choice']
+            print(selected_pv)
+            selected_doctorants = request.POST.getlist('selections')
+            print(selected_doctorants)
+            if not selected_doctorants:
+                error_message = 'Veuillez sélectionner un(des) doctorant(s) avant de valider la réinscription'
+            else:
+                for doctorant_id in selected_doctorants:
+                    doctorant = Doctorant.objects.get(pk=int(doctorant_id))
+                    # Update doctorant properties
+                    doctorant.tab_PVs.add(selected_pv)
                     doctorant.nbr_annees_inscription += 1
-                    doctorant.tab_PVs.add(fichier)
                     doctorant.save()
-                except ObjectDoesNotExist:
-                    # Do something if the doctorant does not exist
-                    pass
-            return redirect('/reinscription')
-    else:
-        form = ReinscriptionForm()
-    return render(request, 'webapp/reinscription.html', {'form': form})
+            return redirect('/reinscription')   
+    return render(request, 'webapp/reinscription.html', {'form': form, 'doctorants': doctorants, 'error_message': error_message})
+ 
+             
+    # Handle GET request
+    search_term = request.GET.get('search_term', '').lower().strip()
+    if search_term:
+        search_words = search_term.split()
+        queries = [Q(nom__icontains=word) | Q(prénom__icontains=word) for word in search_words]
+        query = queries.pop()
+        for item in queries:
+            query &= item
+        doctorants = doctorants.filter(query)
+    # Render the template with the filtered doctorants 
+
 
 
 def changement_titre(request):
-  if request.method == 'POST':
-        form = ChangementDeTitreForm(request.POST)
-        if form.is_valid():
-            fichier_nom = form.cleaned_data['fichier_nom']
-            fichier = PV.objects.get(numéro=fichier_nom)
-            nv_titre = form.cleaned_data['nv_titre']
-            doctorant_email = form.cleaned_data['doctorant_email']
-            try:
-                    doctorant = Doctorant.objects.get(email=doctorant_email)
-                    doctorant.pv_changement_titre = fichier
-                    doctorant.nv_titre = nv_titre
-                    doctorant.save()
-            except ObjectDoesNotExist:
-                    # Do something if the doctorant does not exist
-                pass
-            return redirect('/changementtitre')
-  else:
     form = ChangementDeTitreForm()
-  return render(request, 'webapp/changementtitre.html', {'form': form})
+    doctorants = Doctorant.objects.all().order_by('nom','prénom')
+    error_message = None
+
+    if request.method == 'POST':
+        form =ChangementDeTitreForm(request.POST)
+        if form.is_valid():
+            selected_pv = form.cleaned_data['pv_choice']
+            nv_titre = form.cleaned_data['nv_titre']
+            selected_doctorants = request.POST.getlist('selections')
+            if not selected_doctorants:
+                error_message = 'Veuillez sélectionner un(des) doctorant(s) avant de valider le changement du titre'
+            else:
+              for doctorant_id in selected_doctorants:
+                    doctorant = Doctorant.objects.get(id=int(doctorant_id))
+                    # Update doctorant properties
+                    doctorant.pv_changement_titre = selected_pv
+                    doctorant.nv_titre = nv_titre
+                    doctorant.save() 
+
+    # Handle GET request
+    search_term = request.GET.get('search_term', '').lower().strip()
+    if search_term:
+        search_words = search_term.split()
+        queries = [Q(nom__icontains=word) | Q(prénom__icontains=word) for word in search_words]
+        query = queries.pop()
+        for item in queries:
+            query &= item
+        doctorants = doctorants.filter(query)
+    # Render the template with the filtered doctorants
+    
+    return render(request, 'webapp/changementtitre.html', {'form': form, 'doctorants': doctorants, 'error_message': error_message})
 
 
 
 def soutenance(request):
-  if request.method == 'POST':
+    form = SoutenanceForm()
+    doctorants = Doctorant.objects.all().order_by('nom','prénom')
+    error_message = None
+
+    if request.method == 'POST':
         form = SoutenanceForm(request.POST)
         if form.is_valid():
-            fichier_nom = form.cleaned_data['fichier_nom']
-            fichier = PV.objects.get(numéro=fichier_nom)
-            date = form.cleaned_data['date']
-            doctorant_emails = form.cleaned_data['doctorant_emails'].split()
-            for email in doctorant_emails:
-                try:
-                    doctorant = Doctorant.objects.get(email=email)
-                    doctorant.statut = "A soutenue"
-                    doctorant.a_soutenue = fichier
-                    doctorant.date_soutenance = date
-                    doctorant.save()
-                except ObjectDoesNotExist:
-                    # Do something if the doctorant does not exist
-                    pass
-            return redirect('/soutenance')
-  else:
-        form = SoutenanceForm()
-  return render(request, 'webapp/soutenance.html', {'form': form})
+            selected_pv = form.cleaned_data['pv_choice']
+            d = form.cleaned_data['date']
+            selected_doctorants = request.POST.getlist('selections')
+            if not selected_doctorants:
+                error_message = 'Veuillez sélectionner un(des) doctorant(s) avant de valider la soutenance'
+            else:
+              for doctorant_id in selected_doctorants:
+                    doctorant = Doctorant.objects.get(id=int(doctorant_id))
+                    # Update doctorant properties
+                    doctorant.a_soutenue = selected_pv
+                    doctorant.status = "A soutenue"
+                    doctorant.date_soutenance = d
+                    doctorant.save() 
 
+    # Handle GET request
+    search_term = request.GET.get('search_term', '').lower().strip()
+    if search_term:
+        search_words = search_term.split()
+        queries = [Q(nom__icontains=word) | Q(prénom__icontains=word) for word in search_words]
+        query = queries.pop()
+        for item in queries:
+            query &= item
+        doctorants = doctorants.filter(query)
+    # Render the template with the filtered doctorants
+    
+    return render(request, 'webapp/soutenance.html', {'form': form, 'doctorants': doctorants, 'error_message': error_message})
 
 
 def radiation(request):
-  if request.method == 'POST':
+    form = RadiationForm()
+    doctorants = Doctorant.objects.all().order_by('nom','prénom')
+    error_message = None
+
+    if request.method == 'POST':
         form = RadiationForm(request.POST)
         if form.is_valid():
-            fichier_nom = form.cleaned_data['fichier_nom']
-            fichier = PV.objects.get(numéro=fichier_nom)
-            doctorant_email = form.cleaned_data['doctorant_email']
-            try:
-                    doctorant = Doctorant.objects.get(email=doctorant_email)
-                    doctorant.radié = fichier
-                    doctorant.statut = "Radié"
-                    doctorant.save()
-            except ObjectDoesNotExist:
-                    # Do something if the doctorant does not exist
-                pass
-            return redirect('/radiation')
-  else:
-    form = RadiationForm()
-  return render(request, 'webapp/radiation.html', {'form': form})
+            selected_pv = form.cleaned_data['pv_choice']
+            selected_doctorants = request.POST.getlist('selections')
+            if not selected_doctorants:
+                error_message = 'Veuillez sélectionner un(des) doctorant(s) avant de valider la radiation'
+            else:
+              for doctorant_id in selected_doctorants:
+                    doctorant = Doctorant.objects.get(id=int(doctorant_id))
+                    # Update doctorant properties
+                    doctorant.radié = selected_pv
+                    doctorant.status = "Radié"
+                    doctorant.save() 
 
+    # Handle GET request
+    search_term = request.GET.get('search_term', '').lower().strip()
+    if search_term:
+        search_words = search_term.split()
+        queries = [Q(nom__icontains=word) | Q(prénom__icontains=word) for word in search_words]
+        query = queries.pop()
+        for item in queries:
+            query &= item
+        doctorants = doctorants.filter(query)
+    # Render the template with the filtered doctorants
+    
+    return render(request, 'webapp/radiation.html', {'form': form, 'doctorants': doctorants, 'error_message': error_message})
 
-def abondant(request):
-  if request.method == 'POST':
-        form = AbondantForm(request.POST)
-        if form.is_valid():
-            fichier_nom = form.cleaned_data['fichier_nom']
-            fichier = PV.objects.get(numéro=fichier_nom)
-            doctorant_email = form.cleaned_data['doctorant_email']
-            try:
-                    doctorant = Doctorant.objects.get(email=doctorant_email)
-                    doctorant.abondant = fichier
-                    doctorant.statut = "Abondant"
-                    doctorant.save()
-            except ObjectDoesNotExist:
-                    # Do something if the doctorant does not exist
-                pass
-            return redirect('/abondant')
-  else:
-    form = AbondantForm()
-  return render(request, 'webapp/abondant.html', {'form': form})
 
 
 def inscrip1(request):
@@ -263,3 +300,49 @@ def inscrip3(request):
  
 
 
+def recherche_doctorant(request):
+    if request.method == 'POST':
+        form = RechercheDoctorantForm(request.POST)
+        if form.is_valid():
+            nom_prénom = form.cleaned_data['nom_prénom']
+            date_debut = form.cleaned_data['date_debut']
+            date_fin = form.cleaned_data['date_fin']
+            if not date_debut :
+                date_debut=datetime.date.min
+            date_fin=form.cleaned_data.get('date_fin')
+            if not date_fin :
+                date_fin=datetime.date.max
+            sexe=form.cleaned_data['sexe']
+            option=form.cleaned_data['option']
+            statut=form.cleaned_data['statut']
+            type_doc=form.cleaned_data['type_doc']
+            query = Q()
+            if nom_prénom:
+                query &= (Q(nom__icontains=nom_prénom) | Q(prénom__icontains=nom_prénom))
+            if date_debut:
+                query &= Q(premiere_annee_inscription__range=(date_debut, date_fin))
+            if date_fin:
+                query &= Q(premiere_annee_inscription__range=(date_debut, date_fin))
+            if sexe:
+                query &= Q(sexe=sexe)
+            if option:
+                query &= Q(option=option)
+            if statut:
+                query &= Q(statut=statut)
+            if type_doc:
+                query &= Q(type_doc=type_doc)
+
+            doctorants = Doctorant.objects.filter(query)
+        else:
+            doctorants = Doctorant.objects.all()
+    else:
+        doctorants = Doctorant.objects.all()
+        form = RechercheDoctorantForm()
+
+    context = {'doctorants': doctorants, 'form': form}
+    return render(request, 'webapp/listdoc.html', context)
+
+
+def pv(request):
+  pvs = PV.objects.all().order_by('numéro')
+  return render(request, 'webapp/pv.html', {'pvs': pvs})

@@ -5,10 +5,22 @@
 <main>
   <h1>Statistiques</h1>
   <h3>Veuillez choisir les criteres</h3>
-  <form method="GET" >
+  <form method="GET" class="formmm" >
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Calculer les statistiques</button>
+    <button type="submit" class="btn btn-primary" style="
+            margin-right: 70px;
+            margin-left: 70px;
+            padding : 0px 20px;
+            height:40px;
+            margin-top:90px;
+            background-color: #64D1B4;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+
+          ">Valider</button>
   </form>
 </main>
 {% endblock %}
