@@ -1,0 +1,53 @@
+{% extends 'webapp/main.html' %}
+
+{%block content %}
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css"  href={% static '/css/inscription0.css' %}>
+    <script src="{% static '/js/inscription.js' %}"></script>
+
+
+</head>
+
+<body>
+<main>
+    <div class="center">
+        <div class="h">
+            <h1 class="titre">Inscription</h1>
+            <div class="rectangular"></div>
+            <h2 class="s-titre" style="color:#64D1B4">Quelle méthode voulez-vous choisir ?</h2>
+        </div>
+        <div class="buttons">
+            <a href="{% url 'inscription1' %}">
+            <div class="Bout1">
+                <button class="boutManuel"> Manuel</button>
+            </div>
+            </a>
+
+            <a href="{% url 'fichier' %}">
+            <div class="Bout2">
+                <div class="ph2"></div>
+                <button class="boutExcel"> Par Excel</button>
+            </div>
+           </a>
+        </div>
+    </div>
+    <script src="{% static '/js/inscription.js' %}"></script>
+</main>
+
+</body>
+
+</html>
+{% endblock %}
+

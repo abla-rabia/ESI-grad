@@ -1,0 +1,17 @@
+
+{% extends 'webapp/main.html' %}
+
+{%block content %}
+<h3 class="sous-titre">Ajouter un séminaire</h3>
+        <div class="my-form">
+         <form action="" method="POST">
+           {%csrf_token%}
+           {{form.as_p}}
+           <button type="submit">Submit</button>
+         </form>
+        </div> 
+
+
+{% endblock %}
+
+
