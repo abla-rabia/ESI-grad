@@ -12,8 +12,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <body>
     
-        <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-md-8">
+        <!-- <div class="row d-flex justify-content-center align-items-center"> -->
+          <div>
+            <!-- <div class="col-md-8"> -->
+              <div>
                 <form id="regForm">
                     <h1 id="register">Inscription</h1>
                     <div class="all-steps" id="all-steps"> 
@@ -30,16 +32,20 @@
                           <h6>Nom et prenom:</h6>
                           <input placeholder="Mohammed Med " oninput="this.className = ''" name="fname"></p>
                           <h6>Date de naissance:</h6>
-
-                          <input placeholder="Name..." oninput="this.className = ''" name="fname"></p>
+                          
+                          <input  type="date" oninput="this.className = ''" name="fname"></p>
                           <h6>N° de telephone :</h6>
 
                           <input placeholder="+2130-00-00-00-00" oninput="this.className = ''" name="fname"></p>
                           <h6>Sexe:</h6>
-                          <input  placeholder="gender" oninput="this.className = ''" name="fname"></p>
+                          <!-- <input type="" placeholder="gender" oninput="this.className = ''" name="fname"></p> -->
+                          <select name="gender" id="sexe">
+                            <option value="F">F</option>
+                            <option value="M">M</option>
 
+                          </select>
 
-                           </select>
+                           
                           <h6>Adresse e-mail:</h6>
                           <input placeholder="la-haddad@esi.dz" oninput="this.className = ''" name="fname"></p>
 
@@ -61,7 +67,7 @@
                         <p><input  placeholder="LMD" oninput="this.className = ''" name="uname"></p>
                         <h6>Premiere inscription:</h6>
                         
-                        <p><input type="date" oninput="this.className = ''" name="uname"></p>
+                        <p><input type="date"  oninput="this.className = ''" name="uname"></p>
                         <h6>Date d'enregistrement du fichier central des théses:</h6>
                         <p><input type="date" oninput="this.className = ''" name="uname"></p>
                         <h6>Laboratoire:</h6>
@@ -80,6 +86,7 @@
                         <p><input placeholder="******" oninput="this.className = ''" name="uname"></p>
                     </div>
                     <div class="thanks-message text-center" id="text-message"> <img src="TRUE.png" width="100" class="mb-4">
+                      <!-- <div class="thanks-message"> -->
                         <h3>Inscrit!</h3> <span>Votre inscription est terminée!</span>
                     </div>
                     <div style="overflow:auto;" id="nextprevious">
@@ -91,9 +98,7 @@
             </div>
         </div>
     </div>
-    <title>Document</title>
-</head>
-<body>
+  
     
 </body>
 </html>
