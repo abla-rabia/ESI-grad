@@ -1,0 +1,135 @@
+/* CSS Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* General Styles */
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5F5F5;
+}
+
+.center {
+    width: 70%;
+    max-width: 800px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.tit {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.titre {
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: #000000;
+    line-height: 71px;
+    margin-bottom: 10px;
+}
+
+.rectangular {
+    width: 340px;
+    height: 3px;
+    background-color: #000000;
+    margin: 0 auto 20px;
+}
+
+.s-titre {
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #64D1B4;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px 50px;
+}
+
+.boutThese,
+.boutSout,
+.boutRad {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    background-color: #64D1B4;
+    border-radius: 23px;
+    border: none;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 1;
+    width: 210.75px;
+    height: 41.71px;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 41px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.boutThese:hover,
+.boutSout:hover,
+.boutRad:hover,
+.boutAbnd:hover {
+    background-color: #FFFFFF;
+    color: #64D1B4;
+    border: 3px solid #64D1B4;
+    transition: all 0.4s ease;
+}
+
+.ph1,
+.ph2,
+.ph3 {
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 210.75px;
+    height: 158.25px;
+}
+
+.ph1 {
+    background-image: url("phd.png");
+}
+
+.ph2 {
+    background-image: url("sout.png");
+}
+
+.ph3 {
+    background-image: url("rad.png");
+}
+
+@media (max-width: 768px) {
+    .center {
+        width: 90%;
+        padding: 30px;
+    }
+    .tit {
+        padding: 30px 0;
+    }
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 20px;
+    }
+}
