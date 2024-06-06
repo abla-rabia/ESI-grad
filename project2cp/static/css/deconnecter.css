@@ -1,0 +1,34 @@
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.modal h2 {
+    margin-top: 0;
+}
+
+.modal button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
+}
+
+.modal button.yes {
+    background-color: #64D1B4;
+}
+
+.modal button.no {
+    background-color: #FEB4A9;
+}

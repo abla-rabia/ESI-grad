@@ -1,0 +1,28 @@
+
+{% extends 'webapp/main.html' %}
+
+{%block content %}
+<h3 class="sous-titre">Ajouter un séminaire</h3>
+<br>
+        <div class="my-form">
+         <form action="" method="POST">
+           {%csrf_token%}
+           {{form.as_p}}
+           <button type="submit" class="btn btn-primary" style="
+            margin-left: 800px;
+            padding : 0px 20px;
+            height:40px;
+            background-color: #64D1B4;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+
+          ">Ajouter</button> 
+         </form>
+        </div> 
+
+
+{% endblock %}
+
+

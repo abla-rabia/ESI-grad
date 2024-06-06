@@ -1,0 +1,197 @@
+{% extends 'webapp/main.html' %}
+
+{%block content %}
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href={% static '/css/miseajours.css' %}>
+
+<h2>Détails de {{doctorant.nom}} {{doctorant.prénom}} </h2>
+<br>
+
+<div class="window1" style="width:35%; margin-left:0px; margin-top:10px; padding:10px; float: left;">
+
+    <h3 style="color:#2A2D37">Informations personnelles</h3>
+    
+    <br>
+
+    <table>
+        <tr>
+          <td style="color:#2A2D37"><strong> Nom</strong></td>
+          <td>{{ doctorant.nom }}</td>
+        </tr>
+        <tr>
+          <td style="color:#2A2D37"><strong> Prénom</strong> </td>
+          <td>{{ doctorant.prénom }}</td>
+        </tr>
+        <tr>
+            <td style="color:#2A2D37"><strong> Date de naissance</strong> </td>
+            <td>{{ doctorant.date_de_naissance }}</td>
+          </tr>
+          <tr>
+            <td style="color:#2A2D37"><strong> Téléphone</strong> </td>
+            <td>{{ doctorant.telephone}}</td>
+          </tr>
+          <tr>
+            <td style="color:#2A2D37"><strong> Email</strong> </td>
+            <td>{{ doctorant.email}}</td>
+          </tr>
+
+      </table>
+      <br>
+
+      <a href="{% url 'listdoc' %}" style="  text-decoration: none;    ">
+        <button classe="retour" style="padding-bottom : 6px;
+        padding-top : 6px;padding-right : 10px;padding-left : 10px;
+        margin-top:10px;
+        background-color: #64D1B4;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        margin-left: 20px;
+        height: 60%;
+        font-size: 14px;
+        text-align: center;
+        transition: all 0.3s ease;
+        font-weight: 400;
+        {% comment %} font-height: 400; {% endcomment %}
+        display: flex;
+        align-items: center;">
+            <i class='bx bx-arrow-back'></i>
+            Retour</button>
+        </a>
+
+
+        <a href="{% url 'modifier_doctorant' doctorant.id %}" style="  text-decoration: none;    ">
+        <button classe="retour" style="padding-bottom : 6px;
+        padding-top : 6px;padding-right : 10px;padding-left : 10px;
+        margin-top:-33px; 
+        background-color: #64D1B4;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        margin-left: 125px;
+        height: 45%;
+        font-size: 14px;
+        text-align: center;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        display: flex;
+        align-items: center;">
+            Modifier</button>
+        </a>
+
+</div> 
+
+
+<div class="window2" style="width:35%; margin-left:150px; margin-top:10px; padding:10px; float: left;">
+
+  <h3 style="color:#2A2D37"><span>Informations Professionelles</span></h3>
+  <br>
+
+
+  <table>
+      {% comment %} <tr>
+        <td style="color:#2A2D37"><strong> Etablissement d'origine</strong></td>
+        <td>{{ doctorant.etablissement_origine }}</td>
+      </tr> {% endcomment %}
+      
+      <tr>
+        <td style="color:#2A2D37"><strong> Option</strong> </td>
+        <td>{{ doctorant.option }}</td>
+      </tr>
+      <tr>
+          <td style="color:#2A2D37"><strong> Type doctorat</strong> </td>
+          <td>{{ doctorant.type_doc }}</td>
+        </tr>
+        <tr>
+          <td style="color:#2A2D37"><strong> Premiere inscription</strong> </td>
+          <td  style="white-space: nowrap">{{ doctorant.premiere_annee_inscription }}</td>
+        </tr>
+        <tr>
+          <td style="color:#2A2D37"><strong> Nombre d'anneé d'inscription</strong> </td>
+          <td>{{ doctorant.nbr_annees_inscription}}</td>
+        </tr>
+
+
+        {% if doctorant.statut  == "Inscrit" %}
+       
+        <tr>
+          <td style="color:#2A2D37"><strong> Statut</strong> </td>
+          <td>{{ doctorant.statut }}</td>
+        </tr>
+        <tr>
+          <td style="color:#2A2D37"><strong> Titre de thèse</strong> </td>
+          <td>{{ doctorant.titre_these }}</td>
+        </tr>
+        {% endif %}
+       
+
+
+
+        {% if doctorant.statut == "Différé" %}
+        <tr>
+          <td style="color:#2A2D37"><strong> Statut</strong> </td>
+          <td>{{ doctorant.statut }}</td>
+        </tr>
+        <tr>
+          <td style="color:#2A2D37"><strong> Titre de thèse</strong> </td>
+          <td>{{ doctorant.titre_these }}</td>
+        </tr>
+        {% endif %}
+        
+        {% if doctorant.statut == "Soutenu" %}
+        <tr>
+          <td style="color:#2A2D37"><strong> Statut</strong> </td>
+          <td>{{ doctorant.statut }}</td>
+        </tr>
+
+        <tr>
+          <td style="color:#2A2D37"><strong> Titre de thèse</strong> </td>
+          <td>{{ doctorant.titre_these }}</td>
+        </tr>
+
+        <tr>
+          <td style="color:#2A2D37"><strong> Date de soutenance</strong> </td>
+          <td  style="white-space: nowrap"> {{ doctorant.date_soutenance }} </td>
+        </tr>
+
+        {% endif %}
+
+        {% if doctorant.statut == "Radié" %}
+        <tr>
+          <td style="color:#2A2D37"><strong> Statut</strong> </td>
+          <td>{{ doctorant.statut }}</td>
+        </tr>
+        {% endif %}
+      </table>
+      </div>
+
+      <br>
+      
+
+
+
+
+
+<style>
+  h2 span {
+    white-space: nowrap;
+  }
+  table td {
+    width: 100%;
+    padding: 5px;
+
+    
+  }
+  table {
+    border-spacing: 10px;
+  }
+  
+</style>
+
+{% endblock %}
+
+

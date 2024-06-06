@@ -1,0 +1,157 @@
+{% extends 'webapp/main.html' %}
+
+{%block content %}
+
+    
+<form method="post" class="form-row">
+
+  {% csrf_token %}
+  
+  <h2 class="sous-titre">Liste des séminaires</h2>
+  <div class="first">
+  <div >
+    {{ form.titre }}
+  </div>
+  <button type="submit">Rechercher</button>
+</div>
+  <div class="form-group row">
+    <p >Filtrer les résultats: </p>
+    <div class="col-sm-2" style="margin-left:-20px;">
+      {{ form.type_seminaire }}
+    </div>
+    <div class="col-sm-2"style="margin-left:-315px;">
+      {{ form.résumé }}
+    </div>
+  </div>
+</form>
+
+
+
+
+
+
+<div class="window">
+        
+  <div class="content">
+    <table>
+   <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Type</th>
+      </tr>
+   </thead>
+   <tbody>
+
+  {% for seminaire in page_obj %}
+    <tr>
+      <td>{{ seminaire.titre }}</td>
+      <td>{{ seminaire.type_seminaire }}</td>
+  
+
+    </tr>
+    {% empty %}
+                  <div class="row">
+                      <td colspan="9">Aucun résultat.</td>
+                  </div>
+  {% endfor %}
+  {% if page_obj.has_previous %}
+
+  <a href="?page={{ page_obj.previous_page_number }}" style="text-decoration : none ;"><i class='bx bxs-left-arrow-circle' style="color: #2A2D37;font-size:30px;"></i></a>
+{% endif %}
+{% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}" style="text-decoration : none ;">
+    <i class='bx bxs-right-arrow-circle' style="color: #2A2D37;font-size:30px;"></i>
+</a>
+{% endif %}
+</tbody>
+</table>
+</div>
+</div>
+
+
+ {% block css %}
+ <style>
+
+  .window {
+    position: absolute;
+    width: 1000px;
+    height: 360px;
+    top: 60%;
+    left: 59%;
+    transform: translate(-50%, -50%);
+    border-radius: 23px;
+    border: 2px solid #ccc;
+    box-shadow: 0px 0px 10px #ccc;
+}
+
+
+  
+  .table-container {
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    border: none;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #fff;
+    font-weight: bold;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #fff;
+  }
+  
+
+
+  .submit-button {
+    padding: 5px 10px;
+    background-color: #FEB4A9;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+}
+
+
+.submit-button:hover {
+  cursor: pointer;
+  background-color: #d3d4ca;
+}
+ </style>         
+
+{% endblock %} 
+ 
+{% endblock %} 
+
+
+
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+    
+    

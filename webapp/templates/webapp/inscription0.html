@@ -1,0 +1,39 @@
+
+{% extends 'webapp/main.html' %}
+
+{%block content %}
+
+
+
+{% load static %}
+<link rel="stylesheet" type="text/css"  href={% static '/css/inscrp.css' %}>
+ 
+
+       <div class="center">
+           <div class="h">
+               <h1 class="titre">Inscription</h1>
+               <div class="rectangular"></div>
+               <h2 class="s-titre">Quelle méthode voulez-vous choisir ?</h2>
+           </div>
+
+           <div class="buttons">
+               <a href="{% url 'inscription1' %}"  style="text-decoration : none ;">
+               <div class="Bout1">
+                   <div class="ph1"></div>
+                   <button class="boutManuel"> Manuel</button>
+               </div>
+           </a>
+           <a href="{% url 'inscriptionexcel' %}" style="text-decoration : none ;">
+               <div class="Bout2">
+                   <div class="ph2"></div>
+                   <button class="boutExcel"> Par Excel</button>
+               </div>
+           </a>
+           </div>
+       </div>
+   {% endblock %}
+
+
+   
+
+

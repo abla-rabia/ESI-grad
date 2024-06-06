@@ -1,0 +1,112 @@
+{% extends 'webapp/main.html' %}
+
+{%block content %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Liste des PVs</title>
+        <!--Boxiocns CDN Link-->
+        <!-- Boxicons CSS -->
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    </head>
+    <body>
+
+  <h1>Liste des PVs</h1>
+  <form method="post" >
+    {% csrf_token %}
+    <div class="first">
+  <div>
+    {{ form.année }}
+  </div>
+  <button type="submit">Rechercher</button>
+  
+</div>
+<br>
+<div>
+  {{ form.ordre }}
+</div>
+  </form>
+  <br>
+  <table class="pv-table">
+    <thead>
+      <tr>
+        <th>Numéro</th>
+        <th>Lien vers le PV</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pv in page_obj %}
+        <tr>
+          <td>{{ pv.numéro }}</td>
+          <td><button class="submit-button"><a href="{{ pv.fichier.url }}" target="_blank" style="text-decoration : none ;color:#fff;">Lien</a></button</td>
+          
+
+        </tr>
+      {% endfor %}
+      {% if page_obj.has_previous %}
+
+  <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% if request.GET.sort_reverse %}&sort_reverse={{ request.GET.sort_reverse }}{% endif %}{% endif %}" style="text-decoration : none ;"><i class='bx bxs-left-arrow-circle' style="color: #2A2D37;font-size:30px;"></i></a>
+{% endif %}
+{% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% if request.GET.sort_reverse %}&sort_reverse={{ request.GET.sort_reverse }}{% endif %}{% endif %}" style="text-decoration : none ;">
+    <i class='bx bxs-right-arrow-circle' style="color: #2A2D37;font-size:30px;"></i>
+</a>
+{% endif %}
+
+    </tbody>
+  </table>
+
+
+
+{% block css %}
+  <style>
+     .submit-button {
+    padding: 5px 10px;
+    background-color: #FEB4A9;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+}
+
+
+.submit-button:hover {
+  cursor: pointer;
+  background-color: #d3d4ca;
+}
+
+
+
+    .pv-table {
+      border-collapse: collapse;
+      width: 90%;
+    }
+
+    .pv th, .pv-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .pv-table th {
+      background-color: #f2f2f2;
+    }
+
+    .pv-table tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .pv-table tr:hover {
+      background-color: #ddd;
+    }
+  </style>
+{% endblock %}  
+
+{% endblock %}

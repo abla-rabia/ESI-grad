@@ -1,0 +1,63 @@
+{% extends 'webapp/main.html' %}
+{%block content %}
+{% load static %}
+
+<link rel="stylesheet"href={% static '/css/inscription1.css' %}>
+
+
+{% comment %} <h3 class="sous-titre">Informations personnelle:</h3>
+        <div class="my-form">
+         <form action="" method="POST">
+           {%csrf_token%}
+           {{form1.as_p}}
+           <button type="submit">Suivant</button>
+         </form>
+        </div>   {% endcomment %}
+
+
+
+ 
+        <h3 class="sous-titre">Informations personnelle:</h3>
+          
+        <form method="post" class="formmm">
+          {% csrf_token %}
+          {{ form1.as_p }}
+
+
+          <a href="{% url 'fichier' %}" style="text-decoration:underline ;color:#9CB5FF;">
+            <div class="link" style="
+            margin-left:20px;
+            margin-top:-300px;
+            color: #9CB5FF;
+            font-size:15px;
+            
+            
+            ">Nouveau PV? </div>
+          </a>
+
+
+
+
+           <button type="submit" class="btn btn-primary" style="
+            margin-left: 20px;
+            padding : 0px 20px;
+            height:40px;
+            margin-top:50px;
+            background-color: #64D1B4;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+
+          ">Suivant</button> 
+        </form>
+        
+
+
+{% endblock %}
+
+
+
+
+        
+  

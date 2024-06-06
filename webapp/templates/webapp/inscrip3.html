@@ -1,0 +1,43 @@
+{% extends 'webapp/main.html' %}
+
+{%block content %}
+
+
+<h3 class="sous-titre" >Informations des encadrants:</h3>
+        <div class="my-form">
+         <form action="" method="POST" class="formmm">
+           {%csrf_token%}
+           {{form3.as_p}}
+
+
+            <a href="{% url 'encadrant' %} "style="text-decoration:underline ;color:#9CB5FF;>
+            <div class="link" style="
+            margin-left: 30px;
+            margin-top:-85px;
+            color: #9CB5DF;
+            font-size:15px;
+            
+            
+            ">Nouveau Directeur? </div>
+          </a>
+           <button type="submit" class="btn btn-primary" style="
+            margin-right: 70px;
+            margin-left: 700px;
+            padding : 0px 20px;
+            height:40px;
+            margin-top:40px;
+            background-color: #64D1B4;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+
+          ">Terminer</button>
+         </form>
+        </div> 
+
+
+
+{% endblock %}
+        
+   

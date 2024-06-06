@@ -1,0 +1,118 @@
+/* default styles */
+
+main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5F5F5;
+}
+
+.center {
+    width: 70%;
+    max-width: 800px;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: translate(0%, -20%);
+}
+
+.girl {
+    background: url("check.png") no-repeat center center;
+    width: 100%;
+    max-width: 388px;
+    height: 274px;
+    margin: 0 auto 20px;
+}
+
+.titre {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    color: #64D1B4;
+    font-weight: 500;
+    font-size: 45px;
+    line-height: 20px;
+    margin: 0 auto 26px;
+    text-align: center;
+    width: 100%;
+    max-width: 305px;
+}
+
+.s-titre {
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    max-width: 510px;
+}
+
+.link {
+    color: #9CB5D4;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    margin: 40 auto;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+}
+
+
+/* media queries for smaller screens */
+
+@media only screen and (max-width: 768px) {
+    .center {
+        width: 90%;
+        padding: 30px;
+    }
+    .girl {
+        max-width: 250px;
+        margin: 80px auto 20px;
+    }
+    .titre {
+        font-size: 30px;
+        margin-bottom: 20px;
+        max-width: 205px;
+    }
+    .s-titre {
+        font-size: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 390px;
+    }
+    .link {
+        font-size: 10px;
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 180px;
+    }
+}
+
+
+/* media queries for larger screens */
+
+@media only screen and (min-width: 1200px) {
+    .girl {
+        max-width: 500px;
+        margin: 120px auto 20px;
+    }
+    .titre {
+        font-size: 60px;
+        margin-bottom: 36px;
+        max-width: 380px;
+    }
+    .s-titre {
+        font-size: 30px;
+        max-width: 510px;
+    }
+    .link {
+        font-size: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 300px;
+    }
+}

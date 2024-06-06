@@ -1,0 +1,166 @@
+{% extends 'webapp/main.html' %}
+
+{%block content %}
+<script>
+  function selectAll() {
+      var checkboxes = document.getElementsByName('selections');
+      var selectAllCheckbox = document.getElementById('select-all-checkbox');
+      for (var i = 0; i < checkboxes.length; i++) {
+          checkboxes[i].checked = selectAllCheckbox.checked;
+      }
+  }
+</script> 
+
+
+<container>
+  <h2 class="sous-titre">Radiation</h2>
+  <form method="GET" action="">
+    <div class="search-bar" style="background:#E4E9EE;margin-left:30px;margin-top:10px;">
+          <i class='bx bx-search'></i>
+          <input type="text" id="search_term" name="search_term" placeholder="Rechercher un doctorant" style="font-size:13px;">
+    </div>
+    </form> 
+<form method="post" class="form-row">
+
+  {% csrf_token %}
+  
+  
+  <div style="margin-top:-30px;margin-left:150px;">
+  <div class="first">
+    {{form.pv_choice}}
+    <button type="submit" style="margin-left:60px;">Valider</button>
+  </div>
+  </div>
+  <br>
+<input type="checkbox" id="select-all-checkbox" onclick="selectAll()"> Sélectionner tout 
+<a href="{% url 'fichier' %}" style="text-decoration:underline ;color:#9CB5FF;">
+  <div class="link" style="
+  margin-left:700px;
+  margin-top:-34px;
+  color: #9CB5FF;
+  font-size:15px;
+  ">Nouveau PV? </div>
+</a>
+<div class="window">
+  <div class="content">
+    <table>
+   <thead>
+      <tr>
+      
+        <th>Sélectionner</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Statut</th>
+      </tr>
+   </thead>
+   <tbody>
+
+    {% for doctorant in page_obj %}
+    <tr>
+      <tr>
+        <td><input type="checkbox" value="{{ doctorant.id }}" name="selections" ></td>
+        <td>{{ doctorant.nom }}</td>
+        <td>{{ doctorant.prénom }}</td>
+        <td>{{ doctorant.email }}</td>
+        <td>{{ doctorant.statut}}</td>
+      </tr>
+      {% empty %}
+                  <div class="row">
+                      <td colspan="9">Aucun résultat.</td>
+                  </div>
+    {% endfor %}
+    {% if page_obj.has_previous %}
+
+    <a href="?page={{ page_obj.previous_page_number }}" style="text-decoration : none ;"><i class='bx bxs-left-arrow-circle' style="color: #2A2D37;font-size:30px;"></i></a>
+  {% endif %}
+  {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}" style="text-decoration : none ;">
+      <i class='bx bxs-right-arrow-circle' style="color: #2A2D37;font-size:30px;"></i>
+  </a>
+  {% endif %}
+</tbody>
+</table>
+</div>
+</div>
+</form>
+</div>
+
+
+</container>
+
+
+ {% block css %}
+ <style>
+  .container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .window {
+    position: absolute;
+    width: 1000px;
+    height: 360px;
+    top: 60%;
+    left: 59%;
+    transform: translate(-50%, -50%);
+    border-radius: 23px;
+    border: 2px solid #ccc;
+    box-shadow: 0px 0px 10px #ccc;
+  }
+
+
+  
+  .table-container {
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    border: none;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #fff;
+    font-weight: bold;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #fff;
+  }
+  
+
+
+  .submit-button {
+    padding: 10px 20px;
+    background-color: #FEB4A9;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+}
+
+
+.submit-button:hover {
+  cursor: pointer;
+  background-color: #d3d4ca;
+}
+
+ </style>         
+
+{% endblock %}
+{% endblock %} 

@@ -1,0 +1,98 @@
+{% extends 'webapp/main.html' %}
+{% block content %}
+
+<h1 style="font-family:Ubuntu">Bienvenu {{request.user.last_name }} ! </h1>
+<br>
+<p style="font-weight: 500;font-family:Ubuntu">Récent</p>
+
+<div class="cards" style="grid-template-columns: repeat(3,1fr);margin-right:80px;margin-top:-10px;">
+            
+    {% for i in ma_liste %}
+        <div class="Doctorants" style="background-color: {% if forloop.counter0|divisibleby:3 %} #64D1B4 {% elif forloop.counter0|add:1|divisibleby:3 %} #214E77 {% else %} #FEB4A9 {% endif %};">
+            <div class="middle">
+                <div class="left">
+                    <div class="circle">
+                        <div class="circle_texte">{{i}}</div>
+                    </div>
+                </div>
+                <div class="name">
+                    <h3>{{ names|slice:forloop.counter|last }}</h3>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="Doctorants" style="background-color:#214E77;">
+        <div class="middle">
+            <div class="left">
+                <div class="circle">
+                    <div class="circle_texte">{{tot}}</div>
+                </div>
+            </div>
+            <div class="name">
+                <h3>Total</h3>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<br>
+{% if request.user.is_staff%}
+<p style="font-weight: 500;font-family:Ubuntu">Séléctionner une tache</p>
+
+<br>
+<br>
+
+
+<div  style="margin-top: -10px;
+display: flex;
+align-items: center;
+justify-content: space-between;">
+
+<a href="{% url 'inscription0' %}" style="text-decoration:none;"><button class="button" style="width:200px;height:200px;border-radius:25px;background:#16334D;color:#fff;border:none;"><i class='bx bx-user-plus' style="font-size:100px;margin-left:140px;margin-top:-20px;"></i><div style="margin-top:130px;margin-left:-120px;margin-right:120px;margin-bottom:20px;">Inscription</div></button></a>
+<a href="{% url 'miseajour' %}" style="text-decoration:none;"><button class="button" style="width:200px;height:200px;border-radius:25px;background:#16334D;color:#fff;border:none;"><i class='bx bx-edit-alt' style="font-size:100px;margin-left:80px;margin-top:-20px;" ></i><div style="margin-top:130px;margin-left:-90px;margin-right:90px;margin-bottom:20px;">Modifier</div></button></a>
+<a href="{% url 'importation' %}" style="text-decoration:none;"><button class="button" style="width:200px;height:200px;border-radius:25px;background:#16334D;color:#fff;border:none;"><i class='bx bxs-file-import' style="font-size:100px;margin-left:150px;margin-top:-20px;" ></i><div style="margin-top:130px;margin-left:-110px;margin-right:140px;margin-bottom:20px;">Initialisation</div></button></a>
+<a href="{% url 'form_view' %}" style="text-decoration:none;"><button class="button" style="width:200px;height:200px;margin-right:80px;border-radius:25px;background:#16334D;color:#fff;border:none;"><i class='bx bx-bar-chart-alt-2' style="font-size:100px;margin-left:135px;margin-top:-20px;"></i><div style="margin-top:130px;margin-left:-110px;margin-right:120px;margin-bottom:20px;">Statistiques</div></button></a>
+</div>
+
+
+{% endif %}
+{% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.0/chart.min.js" integrity="sha512-R60W3LgKdvvfwbGbqKusRu/434Snuvr9/Flhtoq9cj1LQ9P4HFKParULqOCAisHk/J4zyaEWWjiWIMuP13vXEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var liste = {{ ma_liste|safe }};
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ names|safe }},
+                datasets: [{
+                    data: liste,
+                    backgroundColor: ['red','green'],
+                    borderRadius: 50,
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            display: false,
+                            color: 'transparent' // Définir la couleur de la ligne de grille à transparent
+                        }
+                    }]
+                },
+                barPercentage: 0.3,
+            }
+        });
+    </script>
+{% endblock %}
+{% block css %}
+<style>
+    main .button:hover {
+        transform: scale(1.1); /* agrandissement de 10% */
+        transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
+
+
+      }
+</style>
+{% endblock %}
+{% endblock %}

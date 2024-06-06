@@ -1,0 +1,40 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="{% static 'css/icone.png' %}">
+    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"     href={% static '/css/wlc.css' %} >
+    <title>EsiGrad</title>
+</head>
+
+<body>
+    <nav class="frame14">
+        <a href="{% url 'welcome' %}" id="componenet7" style="color:#90C5FB;">Accueil</a>
+        <a href="{% url 'apropos' %}" id="componenet8">A propos</a>
+        <a href="{% url 'contact' %}" id="componenet9">Contact</a>
+    </nav>
+
+
+    <div class="container">
+        <h1 id="dpgr">
+            <img src="{% static 'css/logo2.png' %}" alt="Logo" class="logo-img" style="height:auto;width:100%;">
+        </h1>
+        <h4 id="text">Une  application web permet de gérer facilement les doctorants à l'ESI Alger Oued Smar. Elle permet de suivre les inscriptions, les soutenances et les thèses, ainsi que la gestion des encadrants et des PVs. Avec notre application, la gestion des doctorants devient plus simple et efficace !</h4>
+        <div id="rectangle"></div>
+        <div class="frame8">
+                <a href="{% url 'login' %}"  style="text-decoration : none ;">
+                <button class="button1"> Se Connecter</button>
+            </a>
+        </div>
+
+
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

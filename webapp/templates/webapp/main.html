@@ -1,0 +1,280 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="{% static 'css/icone.png' %}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>EsiGrad</title>
+        <link rel="stylesheet" href={% static '/css/style.css' %}>
+        <link rel="stylesheet" href={% static '/css/style2.css' %}>
+        <link rel="stylesheet" href={% static '/css/navbar.css' %}>
+        <link rel="stylesheet" href={% static '/css/deconnecter.css' %}>
+
+        
+        <!--Boxiocns CDN Link-->
+        <!-- Boxicons CSS -->
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+
+    </head>
+    <body>
+        
+        <nav>
+            <a href="{% url 'Aide' %}">
+            <div class="help-button">
+              <i class="bx bx-question-mark"></i>
+            </div>
+        </a>
+            <div class="search-bar">
+              
+            </div>
+            <div class="profile">
+              <div class="profile-info">
+                <img src={% static '/images/user.jpg'%} alt="Avatar" >
+                <span class="username">{{request.user.last_name}}</span>
+                <i class="bx bx-chevron-down arrow"></i>
+              </div>
+              <div class="dropdown">
+                
+                <img src={% static '/images/user.jpg'%} alt="Avatar" style="margin-top:-70px;">
+                <div class="user-info">
+                    <p>{{request.user.last_name}} {{request.user.first_name}}</p>
+                    <p style="font-size:10px;">{{request.user.email}}</p>
+                    <br>
+                  <button>Modifier mes infos</button>
+                </div>
+              </div>
+            </div>
+          </nav>
+<aside>
+    <div class="sidebar" style="position: fixed; overflow:auto;">
+        <br>
+        <br>
+            <div class="logo">
+                <img src="{% static 'css/logo.png' %}" alt="Logo"style="max-width: 85%;
+                height: auto;">
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="{% url 'Acceuil' %}">
+                        
+                        <i class='bx bx-home-alt'></i>
+                        <span class="link_name">Accueil</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'listdoc' %}">
+                        <i class='bx bx-search'></i>
+                        <span class="link_name">Recherche</span>
+                    </a>
+                </li>
+                {% for group in request.user.groups.all %}
+                {% if group.name == 'admin' %}
+                <li>
+                    <a href="{% url 'inscription0' %}">
+                        <i class='bx bx-user-plus'></i>
+                        <span class="link_name">Inscription</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class='bx bx-user-check'></i>                  
+                            <span class="link_name">Réinscription</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li>
+                            <a class="link_name" href="#">Réinscription</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'reinscriptionnormale' %}">Normale</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'reinscriptiondifferee' %}">Différée</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a href="{% url 'miseajour' %}">
+                        <i class='bx bx-pencil'></i>
+                        <span class="link_name">Mise à jour</span>
+                    </a>
+                </li>
+                {% endif %}
+                {% endfor %}
+                <li>
+                    <a href="{% url 'form_view' %}">
+                        <i class='bx bx-stats' ></i>
+                        <span class="link_name">Statistiques</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class='bx bx-file-blank' ></i>                       
+                            <span class="link_name">PVs</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li>
+                            <a class="link_name" href="#">PVs</a>
+                        </li>
+                        {% for group in request.user.groups.all %}
+                        {% if group.name == 'admin' %}
+                        <li>
+                            <a href="{% url 'fichier' %}">Ajouter un PV</a>
+                        </li>
+                        {% endif%}
+                        {% endfor%}
+
+                        <li>
+                            <a href="{% url 'pv' %}">Liste des PVs</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class='bx bxs-user-detail'></i>          
+                            <span class="link_name">Encadrant</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li>
+                            <a class="link_name" href="#">Encadrant</a>
+                        </li>
+
+                        {% for group in request.user.groups.all %}
+                        {% if group.name == 'admin' %}
+                        <li>
+                            <a href="{% url 'encadrant' %}">Ajouter un encadrant</a>
+                        </li>
+                        {% endif %}
+                        {%endfor%}
+
+                        <li>
+                            <a href="{% url 'listenc' %}">liste des encadrants</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class='bx bx-note'></i>               
+                            <span class="link_name">Séminaire</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li>
+                            <a class="link_name" href="#">Séminaire</a>
+                        </li>
+
+                        {% for group in request.user.groups.all %}
+                           {% if group.name == 'admin' %}
+                        <li>
+                            <a href="{% url 'séminaire' %}">Ajouter un séminaire</a>
+                        </li>
+                        {% endif %}
+                        {%endfor%}
+
+                        <li>
+                            <a href="{% url 'listsem' %}">Liste des séminaires</a>
+                        </li>
+                    </ul>
+
+                </li>
+
+                {% for group in request.user.groups.all %}
+                 {% if group.name == 'admin' %}
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class='bx bx-group' ></i>
+                            <span class="link_name">Gérer les accès</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li>
+                            <a class="link_name" href="#">Gérer les accès</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'add_user' %}">Ajouter un utilisateur</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'list_user' %}">Liste des utilisateurs</a>
+                        </li>
+                    </ul>
+                </li>
+                {% endif%}
+                {% endfor%}
+                <li>
+                    <a href="#" onclick="showModal()" >
+                        <i class='bx bx-log-out'></i>
+                        <span class="link_name">Se déconnecter</span>
+                    </a>
+                </li>
+            </ul>
+
+                
+            </div>
+            
+        </div>
+</aside>
+    <script  src="{% static '/js/script.js' %}"></script>
+
+        <script>
+            let arrow= document.querySelectorAll(".arrow");
+            
+            for (var i=0; i < arrow.length; i++){
+                arrow[i].addEventListener("click",(e)=>{
+                    
+                    let arrowParent = e.target.parentElement.parentElement;
+               console.log(arrowParent);
+               arrowParent.classList.toggle("showMenu");
+             });
+            }
+        </script>
+        <main>
+        {%block content %}
+
+        {% endblock %}
+        </main>
+        <div class="modal" id="myModal" style="display:none;">
+            <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+            <a href="{% url 'logout' %}" >
+                 <button class="yes" onclick="logout()">Oui</button>
+            </a>
+            <button class="no" onclick="hideModal()">Non</button>
+        </div>
+    
+        <script>
+            function showModal() {
+                document.getElementById("myModal").style.display = "block";
+            }
+    
+            function hideModal() {
+                document.getElementById("myModal").style.display = "none";
+            }
+    
+            function logout() {
+                // code pour se déconnecter ici
+            }
+        </script>
+
+
+    </body>
+</html>
+
+
+

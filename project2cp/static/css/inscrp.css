@@ -1,0 +1,143 @@
+ /* Set box-sizing to border-box for all elements */
+    
+ * {
+    box-sizing: border-box;
+}
+/* Set a default font family and font size */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+/* Set maximum width for the content */
+
+main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5F5F5;
+}
+/* Center the main content vertically */
+
+.center {
+    width: 70%;
+    max-width: 800px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.h {
+    text-align: center;
+    padding: 50px 0;
+    margin-left: -40px;
+    margin-top: -40px;
+}
+
+.titre {
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: #000000;
+    line-height: 71px;
+    margin-bottom: 10px;
+}
+
+.rectangular {
+    width: 340px;
+    height: 3px;
+    background-color: #000000;
+    margin: 0 auto 20px;
+}
+
+.s-titre {
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #64D1B4;
+    
+}
+/* Style the buttons */
+
+.buttons {
+    margin-top:-20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+}
+
+.Bout1,
+.Bout2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    text-align: center;
+    width: 180px;
+}
+
+.boutManuel,
+.boutExcel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 23px;
+    border: none;
+    width: 100%;
+    height: 52px;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.2;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #64D1B4;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.boutManuel:hover,
+.boutExcel:hover {
+    background-color: #FFFFFF;
+    color: #64D1B4;
+    border: 3px solid #64D1B4;
+}
+
+.ph1,
+.ph2 {
+    margin-bottom: 10px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.ph1 {
+    background-image: url("man.png");
+    width: 101px;
+    height: 126px;
+}
+
+.ph2 {
+    background-image: url("exc.png");
+    width: 101px;
+    height: 126px;
+}
+/* Media queries for smaller screens */
+
+@media (max-width: 768px) {
+    .center {
+        height: auto;
+        margin-bottom: 50px;
+    }
+    .h {
+        margin-bottom: 30px;
+    }
+    .titre {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+    .s-titre {
+        font-size: 18px;
+        line-height: 1.3;
+    }
+}

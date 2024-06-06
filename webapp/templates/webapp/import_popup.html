@@ -1,0 +1,23 @@
+{% extends 'webapp/main.html' %}
+
+{%block content %}
+{% load static %}
+    
+    <link rel="stylesheet" type="text/css"     href={% static '/css/popup.css' %}>
+ 
+
+        <div class="center">
+            <div class="girl"></div>
+            
+            {% comment %} <h1 class="titre">Félicitation</h1>
+            <h2 class="s-titre">l'opération d'Inscription a été fait avec succès</h2> {% endcomment %}
+
+            <h1 class="titre">c'est fait</h1>
+            <h2 class="s-titre">le fichier a été bien importé</h2>
+            
+         
+        </div> 
+        
+             
+    
+            {% endblock %}

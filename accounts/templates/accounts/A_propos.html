@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <link rel="icon" type="image/png" href="{% static 'css/icone.png' %}">
+        <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>EsiGrad</title>
+    <link rel="stylesheet" href={% static '/css/A_propos.css' %}>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+</head>
+
+<body>
+    <nav class="frame14">
+        <a  id="componenet7" href="{% url 'welcome' %}" >Accueil</a>
+        <a  id="componenet8" style="color:#90C5FB;">A propos</a>
+        <a  id="componenet9" href="{% url 'contact' %}" >Contact</a>
+    </nav>
+    <div class="A">
+        <h2 class="A_propos">A propos</h2>
+        <div class="rectangle"></div>
+        <p class="text">Notre application web de gestion des doctorants est la solution idéale pour l'ESI Alger Oued Smar. Elle permet de gérer efficacement tous les aspects de la vie des doctorants, de leur inscription initiale à la soutenance de leur thèse. Grâce à notre application, les responsables peuvent facilement suivre l'avancement des travaux de recherche des doctorants. Nous avons conçu notre application pour offrir une expérience utilisateur optimale, avec une interface intuitive et des fonctionnalités avancées pour une gestion simplifiée et efficace de la vie des doctorants à l'ESI.</p>
+
+    </div>
+
+
+</body>
+
+</html>

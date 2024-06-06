@@ -1,0 +1,38 @@
+{% extends 'webapp/main.html' %}
+
+{%block content %}
+
+
+
+<h3 class="sous-titre">Informations professionelle:</h3>
+<div class="my-form">
+ <form action="" method="POST" class="formmm">
+   {%csrf_token%}
+   {{form2.as_p}}
+   
+   <button type="submit" class="btn btn-primary" style="
+            margin-right: 70px;
+            margin-left: 70px;
+            padding : 0px 20px;
+            height:40px;
+            margin-top:20px;
+            background-color: #64D1B4;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+
+          ">Suivant</button>
+          <p style="font-size:10px;">EFST : Date enregistrement fichier central des thèses</p>
+ </form>
+</div> 
+
+
+
+{% endblock %}
+
+
+
+
+
+

@@ -1,0 +1,152 @@
+{% load static %}
+<aside>
+    <div class="sidebar" style="position: fixed; overflow:auto;">
+        <div class="logo">
+            <img src="{% static 'css/logo.png' %}" alt="Logo"style="max-width: 85%;
+            height: auto;">
+        </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="{% url 'Acceuil' %}">
+                        
+                        <i class='bx bx-home-alt'></i>
+                        <span class="link_name">Accueil</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'listdoc' %}">
+                        <i class='bx bx-search'></i>
+                        <span class="link_name">Recherche</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'inscription0' %}">
+                        <i class='bx bx-user-plus'></i>
+                        <span class="link_name">Inscription</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class='bx bx-user-check'></i>                  
+                            <span class="link_name">Réinscription</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li>
+                            <a class="link_name" href="#">Réinscription</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'reinscriptionnormale' %}">Normale</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'reinscriptiondifferee' %}">Différée</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{% url 'miseajour' %}">
+                        <i class='bx bx-pencil'></i>
+                        <span class="link_name">Mise à jour</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'form_view' %}">
+                        <i class='bx bx-stats' ></i>
+                        <span class="link_name">Statistiques</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class='bx bx-file-blank' ></i>                       
+                            <span class="link_name">PVs</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li>
+                            <a class="link_name" href="#">PVs</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'fichier' %}">Ajouter un PV</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'pv' %}">Liste des PVs</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class='bx bxs-user-detail'></i>          
+                            <span class="link_name">Encadrant</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li>
+                            <a class="link_name" href="#">Encadrant</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'encadrant' %}">Ajouter un encadrant</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'listenc' %}">liste des encadrants</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class='bx bx-note'></i>               
+                            <span class="link_name">Séminaire</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li>
+                            <a class="link_name" href="#">Séminaire</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'séminaire' %}">Ajouter un séminaire</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'listsem' %}">Liste des séminaires</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class='bx bx-group' ></i>
+                            <span class="link_name">Gérer les accès</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li>
+                            <a class="link_name" href="#">Gérer les accès</a>
+                        </li>
+                        <li>
+                            <a href="#">Ajouter un utilisateur</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'listusers' %}">Liste des utilisateurs</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" >
+                        <i class='bx bx-log-out'></i>
+                        <span class="link_name">Se déconnecter</span>
+                    </a>
+                </li>
+            </ul>
+
+                
+            </div>
+            
+        </div>
+</aside>

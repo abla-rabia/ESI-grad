@@ -1,0 +1,45 @@
+{% extends 'webapp/main.html' %}
+
+{%block content %}
+{% load static %}
+
+
+<link rel="stylesheet" href="{% static 'css/pv.css' %}">
+<h3 class="sous-titre">Ajouter un PV</h3>
+       <br>
+       <br>
+       <div class="my-form">
+       <form method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+         <p>
+          {{form.as_p}}
+         </p>
+
+
+
+         <button type="submit" class="btn btn-primary" style="
+         {% comment %} margin-right: 70px; {% endcomment %}
+         margin-left: 700px;
+         padding : 0px 20px;
+         height:40px;
+         margin-top:90px;
+         background-color: #64D1B4;
+         color: white;
+         border: none;
+         border-radius: 25px;
+         cursor: pointer;
+
+       ">Ajouter</button>
+  
+      </form>
+      </div>   
+
+
+
+{% endblock %}
+
+
+
+
+
+       

@@ -1,0 +1,83 @@
+{% extends 'webapp/main.html' %}
+{% block content %}
+
+<h1> Page d'Aide </h1>
+<br>
+<div class="paragraph">
+    <h3 class="paragraph-title" onclick="toggleParagraph('paragraph1')">
+      <i class="bx bx-plus"></i> Comment inscrire un (des) doctorant(s) ?
+    </h3>
+    <div id="paragraph1" class="paragraph-content">
+      <p>Si vous voulez faire l'inscription , vous avez le choix soit d'inscrire un seul doctorant manuellement ou plusieurs doctorants en utilisant un fichier Excel , pour cela , allez à la page "Inscription" qui se trouve dans le sidebar à gauche de la page, si vous voulez faire une inscription manuelle choisissez alors "Manuel" et remplissez les informations du doctorant .Sinon choisissez "Par Excel" , téléchargez le fichier modèle pour le remplir avec les données des doctorants et effectuez l'inscription . Vous pouvez vérifier que le(s) doctorant(s) ont été ajouté(s) dans la page de Recherche .</p>
+    </div>
+  </div>
+  <div class="paragraph">
+    <h3 class="paragraph-title" onclick="toggleParagraph('paragraph2')">
+      <i class="bx bx-plus"></i> Comment initialiser la BDD pour la première fois ? 
+    </h3>
+    <div id="paragraph2" class="paragraph-content">
+      <p>Dans la page d'accueil , vous trouvez un bouton "Importation", cliquez le et téléchargez le fichier exemple , ensuite remplissez le par les doctorants que vous voulez initialisez la BDD avec et effectuez l'importation .Vous pouvez consulter la liste des doctorants ajoutés dans la page de recherche .</p>
+    </div>
+  </div>
+
+  <div class="paragraph">
+    <h3 class="paragraph-title" onclick="toggleParagraph('paragraph3')">
+      <i class="bx bx-plus"></i> Comment avoir des statistiques sur les doctorants?
+    </h3>
+    <div id="paragraph3" class="paragraph-content">
+      <p>Allez vers la page "statistiques", choisissez un ou deux critères au choix , sélectionnez la plage de date d’inscription (facultatif) et cliquez sur [Valider] , vous verrez maintenant vers la page des statistiques numériques, cliquez sur [Graphique] pour switcher entre les deux représentations.</p>
+    </div>
+  </div>
+  <div class="paragraph">
+    <h3 class="paragraph-title" onclick="toggleParagraph('paragraph4')">
+      <i class="bx bx-plus"></i> Comment effecteur une mise à jour ?
+
+    </h3>
+    <div id="paragraph4" class="paragraph-content">
+      <p>Allez vers la page des mise a jour , sélectionnez ce que vous voulez mettre à jour , vous aurez liste avec une barre de recherche , une barre de selection et quelque elements valable pour la fonctionnalité choisis , selectionnez les doctorants que vous voulez mettre à jour leurs statut , entrez le pv cs , et les champs spéciaux de l’opération, et effectuer la mise à jour . Note : c’est le même processus de la réinscription différée et normale.
+    </div>
+  </div>
+<br>
+{% block scripts %}
+<script>
+    function toggleParagraph(paragraphId) {
+      var paragraphContent = document.getElementById(paragraphId);
+      paragraphContent.style.display = paragraphContent.style.display === "none" ? "block" : "none";
+    }
+</script>
+{% endblock %}
+{% block css %}
+<style>
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .paragraph {
+      margin-bottom: 10px;
+    }
+
+    .paragraph-title {
+      cursor: pointer;
+      font-weight: bold;
+      padding: 10px;
+      background-color: #64D1B4;
+      color: #fff;
+      border-radius: 20px;
+      width:80%;
+      
+    }
+
+    .paragraph-title i {
+      margin-right: 5px;
+    }
+
+    .paragraph-content {
+      display: none;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      width:80%;
+    }
+  </style>
+{% endblock %}
+{% endblock %}

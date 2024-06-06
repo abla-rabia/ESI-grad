@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>integration</title>
+        <!-- Link Swiper's CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+        <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <!--Boxiocns CDN Link-->
+        <!-- Boxicons CSS -->
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <body>
+        {% include 'statistiques/parts/nav.html' %}
+        {% include 'statistiques/parts/side.html' %}
+
+        {% block content%}
+         
+        {% endblock %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.0/chart.min.js" integrity="sha512-R60W3LgKdvvfwbGbqKusRu/434Snuvr9/Flhtoq9cj1LQ9P4HFKParULqOCAisHk/J4zyaEWWjiWIMuP13vXEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var liste = {{ ma_liste|safe }};
+            var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ names|safe }},
+                datasets: [{
+                    label:'statistiques',
+                    data: liste,
+                    backgroundColor: {{ couleurs_fond|safe }},
+                    borderRadius: 50,
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            display: false,
+                            color: 'transparent' // Définir la couleur de la ligne de grille à transparent
+                        }
+                    }]
+                },
+                barPercentage: 0.3,
+            
+            }
+        });
+    
+    
+        var ctx2 = document.getElementById('chart').getContext('2d');
+        var chart2 = new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: {{ names|safe }},
+                datasets: [{
+                    data: liste,
+                    backgroundColor: {{ couleurs_fond|safe }},
+                }],
+            },
+            options: {
+                cutoutPercentage: 30,
+                responsive: true,
+                maintainAspectRatio: false,
+                aspectRatio: 2,
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor(((currentValue/total) * 100)+0.5);
+                            if (currentValue === 0) {
+                                return "";
+                            } else {
+                                return dataset.labels[tooltipItem.index] + ": " + percentage + "%";
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        </script>
+        <script src="{% static 'js/script.js' %}"></script>
+        <script>
+                let arrow= document.querySelectorAll(".arrow");        
+                for (var i=0; i < arrow.length; i++){
+                    arrow[i].addEventListener("click",(e)=>{    
+                        let arrowParent = e.target.parentElement.parentElement;
+                        console.log(arrowParent);
+                        arrowParent.classList.toggle("showMenu");
+                    });
+                }
+        </script>
+    </body>
+</html>

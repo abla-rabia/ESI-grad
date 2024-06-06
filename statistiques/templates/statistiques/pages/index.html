@@ -1,0 +1,94 @@
+{% extends 'main.html' %}
+
+        
+    {% block content %}
+    <main>
+        <div class="text">
+        <h2>{{criteres.0}}</h2>
+        <h2>{{criteres.1}}</h2>
+        </div>
+        <div class="boutt" style="padding-top:20px;">
+            <button id="Numeriques" style="background-color: #214E77; color: #fff; border:none; border-radius:10px 0px 0px 10px; padding-top:7px;padding-right:14px;padding-bottom:7px;padding-left:14px; font-size:15px;margin-right:-5px; ">Numeriques</button>
+            <a href="{% url 'stats2' %}"><button id="Graphiques" style="background-color: none; color: #214E77; border-color:#214E77; border-radius:0px 10px 10px 0px; padding-top:5px;padding-right:12px;padding-bottom:5px;padding-left:12px;font-size:15px ; ">Graphiques</button></a>
+        </div>
+        
+        <div class="cards" style="grid-template-columns: repeat(3,1fr);margin-right:30px">
+            
+            {% for i in ma_liste %}
+                <div class="Doctorants" style="background-color: {% if forloop.counter0|divisibleby:3 %} #64D1B4 {% elif forloop.counter0|add:1|divisibleby:3 %} #214E77 {% else %} #FEB4A9 {% endif %};">
+                    <div class="middle">
+                        <div class="left">
+                            <div class="circle">
+                                <div class="circle_texte">{{i}}</div>
+                            </div>
+                        </div>
+                        <div class="name">
+                            <h3>{{ names|slice:forloop.counter|last }}</h3>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% comment %} <div class="Doctorantes">
+                <div class="middle">
+                    <div class="left">
+                        <div class="circle">
+                            <div class="circle_texte">{{nbF}}</div>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <h3>Doctorantes</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="Total">
+                <div class="middle">
+                    <div class="left">
+                        <div class="circle">
+                            <div class="circle_texte">{{nbM}}</div>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <h3>Total</h3>
+                    </div>
+                </div>
+            </div> {% endcomment %}
+            
+        </div>
+        <a href="{% url 'form_view' %}" style="  text-decoration: none;    ">
+        <button classe="retour" style="padding-bottom : 6px;
+        padding-top : 6px;padding-right : 10px;padding-left : 10px;
+        margin-top:20px;
+        background-color: #64D1B4;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        margin-left: 10px;
+        height: 50%;
+        font-size: 14px;
+        text-align: center;
+        transition: all 0.3s ease;
+        font-weight: 400;
+        display: flex;
+      align-items: center;">
+            <i class='bx bx-arrow-back'></i>
+            Retour</button>
+        </a>
+        <!--
+        <div class="hello">
+            <h2>Graphes</h2>    
+        
+        <div class="bar">
+            <canvas id="myChart"></canvas>
+            <canvas id="chart"></canvas>
+        </div>
+        -->
+    </div>
+    </main>
+
+
+
+
+  
+    {% endblock  %}
+   
