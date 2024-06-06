@@ -1,4 +1,5 @@
 # ESI-Grad: Doctoral Management App
+![Alt text](https://github.com/abla-rabia/ESI-grad/blob/main/static/css/logo.png?raw=true)
 
 This GitHub repository contains our 2CP project given at ESI Algiers.
 
